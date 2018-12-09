@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28315.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class1", "LDY.IPU.CSharp.Fundamentals.Class1", "{CE80E9D8-047B-4D18-AB5E-8D9017BF56D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class2", "LDY.IPU.CSharp.Fundamentals.Class2", "{F5D8B57F-52D4-4525-9A76-5C8A0EA264C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class3", "LDY.IPU.CSharp.Fundamentals.Class3", "{B6A00675-C57C-4E15-B407-F09960B17E4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class4", "LDY.IPU.CSharp.Fundamentals.Class4", "{6120A57C-27FA-4CEA-B9AD-E049D263B6A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class5", "LDY.IPU.CSharp.Fundamentals.Class5", "{08F2F492-80C4-4EBD-AA62-E61FEF41F878}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class6", "LDY.IPU.CSharp.Fundamentals.Class6", "{10B49897-A30C-4F22-95A8-15D207D56C46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class7", "LDY.IPU.CSharp.Fundamentals.Class7", "{8FA1D1FD-C5B8-494A-81BE-927119FF3DE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class8", "LDY.IPU.CSharp.Fundamentals.Class8", "{63DA0261-58D1-440A-A82A-FB20ECD1A41E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class9", "LDY.IPU.CSharp.Fundamentals.Class9", "{88474EA4-7F5D-4728-962F-0327C156E6D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LDY.IPU.CSharp.Fundamentals.Class10", "LDY.IPU.CSharp.Fundamentals.Class10", "{6F59F93B-7CEF-40EA-B42C-C3AA5BDFBD3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables", "LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables\LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables.csproj", "{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods", "LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods\LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods.csproj", "{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes", "LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes\LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes.csproj", "{FE4F70EF-6ABD-455D-AD97-36F913D5547B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes", "LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes\LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes.csproj", "{89DC2C38-04BF-41C1-9045-C27A4EE92D7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance", "LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance\LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.csproj", "{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface", "LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface\LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface.csproj", "{974BA263-1DCC-4077-95D7-44C3BC4255DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class9.Equals", "LDY.IPU.CSharp.Fundamentals.Class9.Equals\LDY.IPU.CSharp.Fundamentals.Class9.Equals.csproj", "{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class1.ClassLibrary", "LDY.IPU.CSharp.Fundamentals.Class1.ClassLibrary\LDY.IPU.CSharp.Fundamentals.Class1.ClassLibrary.csproj", "{885B8B1A-DB6F-4B37-B356-E7C82C6058D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class10", "LDY.IPU.CSharp.Fundamentals.Class10\LDY.IPU.CSharp.Fundamentals.Class10.csproj", "{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE4F70EF-6ABD-455D-AD97-36F913D5547B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE4F70EF-6ABD-455D-AD97-36F913D5547B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE4F70EF-6ABD-455D-AD97-36F913D5547B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE4F70EF-6ABD-455D-AD97-36F913D5547B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89DC2C38-04BF-41C1-9045-C27A4EE92D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DC2C38-04BF-41C1-9045-C27A4EE92D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DC2C38-04BF-41C1-9045-C27A4EE92D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DC2C38-04BF-41C1-9045-C27A4EE92D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{974BA263-1DCC-4077-95D7-44C3BC4255DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{974BA263-1DCC-4077-95D7-44C3BC4255DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{974BA263-1DCC-4077-95D7-44C3BC4255DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{974BA263-1DCC-4077-95D7-44C3BC4255DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCE2429E-B9D8-4AF8-961F-926EDB9BB4F7} = {F5D8B57F-52D4-4525-9A76-5C8A0EA264C5}
+		{B51D9AE1-785F-4700-B3EC-F6C08D19BBA8} = {B6A00675-C57C-4E15-B407-F09960B17E4A}
+		{FE4F70EF-6ABD-455D-AD97-36F913D5547B} = {6120A57C-27FA-4CEA-B9AD-E049D263B6A8}
+		{89DC2C38-04BF-41C1-9045-C27A4EE92D7D} = {08F2F492-80C4-4EBD-AA62-E61FEF41F878}
+		{E2E9C602-0FBB-4122-ABEB-53E5CAA8903B} = {10B49897-A30C-4F22-95A8-15D207D56C46}
+		{974BA263-1DCC-4077-95D7-44C3BC4255DC} = {8FA1D1FD-C5B8-494A-81BE-927119FF3DE0}
+		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12} = {88474EA4-7F5D-4728-962F-0327C156E6D0}
+		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4} = {CE80E9D8-047B-4D18-AB5E-8D9017BF56D8}
+		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B} = {6F59F93B-7CEF-40EA-B42C-C3AA5BDFBD3D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {388B8C2A-575F-468F-B318-2EAE7CDBD4C0}
+	EndGlobalSection
+EndGlobal
