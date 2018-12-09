@@ -52,7 +52,7 @@
     <Compile Include="Factory\Services\FileHandler.cs" />
     <Compile Include="Factory\Services\Logger.cs" />
     <Compile Include="Factory\Worker.cs" />
-    <Compile Include="Program_Class5.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

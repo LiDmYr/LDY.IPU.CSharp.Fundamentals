@@ -2,10 +2,9 @@
 using System.Text;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
-    public class Program_Class3 {
+    public class Program {
         internal static void Main(string[] args) {
             #region Arrays
-            //Arrays
             if (false) {
                 Console.WriteLine(" --------- arrays");
                 int[] firstNumberArray0 = new int[] { };
@@ -43,14 +42,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 var elementjaggedArray = jaggedArray[3];
             }
             #endregion
-
-            // Loops
-            if (true) {
-                //for - DONE
-                //foreach - IN PROGRESS
-                //while - NOT STARTED
-                //do...while - NOT STARTED
-            }
 
             #region Loops
             if (false) {

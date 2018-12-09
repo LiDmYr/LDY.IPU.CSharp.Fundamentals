@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
-    class Program_Class2 {
-        static void Main(string[] args) {
+    public class Program {
+        public static void Main(string[] args) {
             #region Variables
             if (false) {
                 Console.WriteLine(" --------- Variables");
@@ -76,7 +76,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             if (false) {
                 Console.WriteLine(" --------- Constants");
                 const int firstConstant = 10;
-                // 1) initialization is required; 2) it's possible to change value; 
+                // 1) initialization is required; 2) it is not possible to change value; 
             }
             #endregion
 
@@ -100,14 +100,12 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Increment/Decrement
             if (false) {
                 Console.WriteLine(" --------- Increment/Decrement");
-                int incrementPost = 10;
-                int decrementPost = 10;
+                int incrementPost = 0;
+                int decrementPost = 0;
                 Console.WriteLine("incrementPost = " + incrementPost++);
                 Console.WriteLine("decrementPost = " + decrementPost--);
-                Console.WriteLine("incrementPost = " + incrementPost);
-                Console.WriteLine("decrementPost = " + decrementPost);
-                int incrementPre = 10;
-                int decrementPre = 10;
+                int incrementPre = 0;
+                int decrementPre = 0;
                 Console.WriteLine("incrementPre = " + ++incrementPre);
                 Console.WriteLine("decrementPre = " + --decrementPre);
             }
@@ -148,7 +146,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Equality Operators and Less\Greater than
             if (false) {
                 Console.WriteLine(" --------- Equality Operators and Less\\Greater than");
-                bool comparisonResult1 = 2 < 10;
+                var comparisonResult1 = 2 < 10;
                 Console.WriteLine("2 < 10 : " + comparisonResult1);
 
                 var comparisonResult2 = 2 <= 10;
@@ -171,7 +169,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Logic operations
             if (false) {
                 Console.WriteLine(" --------- Logic operations");
-                bool logicalAND_true_true = true && true;
+                var logicalAND_true_true = true && true;
                 Console.WriteLine("logicalAND_true_true = " + logicalAND_true_true);
 
                 var logicalAND_true_false = true && false;
@@ -203,7 +201,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 // if {...} else {...}
                 int ifElseFirstValue = 10;
                 Console.WriteLine("START: ifElseFirstValue = " + ifElseFirstValue);
-
                 if (ifElseFirstValue > 5) {
                     Console.WriteLine("ifElseFirstValue > 5");
                 } else {
@@ -230,29 +227,24 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 // switch
                 string color = "green";
                 switch (color) {
-                    case "blue": {
-                            Console.WriteLine("I like " + color + " color");
-                            break;
-                        }
-                    case "green": {
-                            Console.WriteLine("I love " + color + " color");
-                            break;
-                        }
-                    case "yellow": {
-                            Console.WriteLine(color + "is not bad color");
-                            break;
-                        }
-                    default: {
-                            Console.WriteLine("I don't know " + color + " color");
-                            break;
-                        }
+                    case "blue":
+                        Console.WriteLine("I like " + color + " color");
+                        break;
+                    case "green":
+                        Console.WriteLine("I love " + color + " color");
+                        break;
+                    case "yellow":
+                        Console.WriteLine(color + "is not bad color");
+                        break;
+                    default:
+                        Console.WriteLine("I don't know " + color + " color");
+                        break;
                 }
 
                 // ternary operator
                 int age = 16;
-                // result = 'condition' ? 'true case' : 'false case';
-                int beerVolumeInMl = (age > 21) ? 500 : 0;
-
+                // result = condition? true case: false case;
+                int beerVolumeInMl = age > 21 ? 500 : 0;
                 Console.WriteLine("beer volume is allowed with " + age + "years is " + beerVolumeInMl);
             }
             #endregion
@@ -300,24 +292,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             }
             #endregion
 
-            int[] numbers = new int[4];
-            numbers[0] = 1;
-            numbers[1] = 2;
-            numbers[2] = 3;
-            numbers[3] = 4;
-            numbers[0] = 2;
-
-            foreach (int item in numbers) {
-                Console.WriteLine(item);
-            }
-            int arrraCount = numbers.Length;
-            for (int i = arrraCount - 1; i >= 0; i--) {
-                numbers[i] = i * 10;
-            }
-            //for (int i = 0; i < length; i++) { }
-
             Console.ReadLine();
         }
     }
 }
-

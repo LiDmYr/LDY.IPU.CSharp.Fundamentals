@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
-    public class Program_Class6 {
+    public class Program {
         private static void Main(string[] args) {
             // 1) Inheritance
             if (true) {

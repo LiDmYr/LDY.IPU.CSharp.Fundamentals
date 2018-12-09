@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 // using LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes.Separatedfiles;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes {
-    /// <summary>
-    /// Agenda:
-    ///  
-    /// </summary
-    class program {
-        static void Main(string[] args) {
+    public class Program {
+        public static void Main(string[] args) {
             // 1) Class + Constructor
             if (true) {
                 Person person = new Person();

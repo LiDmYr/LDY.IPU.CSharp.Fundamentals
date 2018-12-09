@@ -4,7 +4,7 @@ using System.Collections.Generic;
 // using System.Linq;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
-    internal class Program_Class5 {
+    internal class Program {
         private static void aMain(string[] args) {
             // 1) Default values + Null
             if (false) {
