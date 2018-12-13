@@ -209,21 +209,37 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
 
                 int ifElseSecondValue = 49;
                 Console.WriteLine("START: ifElseSecondValue = " + ifElseSecondValue);
+                string secondResultString = "";
                 if (ifElseSecondValue > 50) {
-                    Console.WriteLine("ifElseSecondValue > 50");
+                    secondResultString = "ifElseSecondValue > 50;";
                     if (ifElseSecondValue > 75) {
-                        Console.WriteLine("ifElseSecondValue > 75");
+                        secondResultString += "ifElseSecondValue > 75;";
                     } else {
-                        Console.WriteLine("ifElseFirstValue <= 50");
+                        secondResultString += "ifElseFirstValue <= 50;";
                     }
                 } else {
-                    Console.WriteLine("ifElseSecondValue <= 50");
+                    secondResultString = "ifElseSecondValue <= 50;";
                     if (ifElseSecondValue > 25) {
-                        Console.WriteLine("ifElseSecondValue > 25");
+                        secondResultString += "ifElseSecondValue > 25;";
                     } else {
-                        Console.WriteLine("ifElseFirstValue <= 25");
+                        secondResultString += "ifElseFirstValue <= 25;";
                     }
                 }
+                Console.WriteLine(secondResultString);
+
+                int ifElseThirdValue = 10;
+                string thirdResultString = "";
+                if (ifElseThirdValue > 0 && ifElseThirdValue < 100) {
+                    thirdResultString = "ifElseThirdValue > 0 && ifElseThirdValue < 100";
+                } else if (ifElseThirdValue >= 100 && ifElseThirdValue < 1000) {
+                    thirdResultString = "ifElseThirdValue >= 100 && ifElseThirdValue < 1000";
+                } else if (ifElseThirdValue >= 1000 && ifElseThirdValue < 10000) {
+                    thirdResultString = "ifElseThirdValue >= 1000 && ifElseThirdValue < 10000";
+                } else {
+                    thirdResultString = "ifElseThirdValue <= 1000 && ifElseThirdValue >= 10000";
+                }
+                Console.WriteLine(thirdResultString);
+
                 // switch
                 string color = "green";
                 switch (color) {
