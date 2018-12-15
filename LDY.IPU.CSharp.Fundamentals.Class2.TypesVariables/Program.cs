@@ -202,9 +202,11 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 int ifElseFirstValue = 10;
                 Console.WriteLine("START: ifElseFirstValue = " + ifElseFirstValue);
                 if (ifElseFirstValue > 5) {
-                    Console.WriteLine("ifElseFirstValue > 5");
+                    Console.WriteLine("ifElseFirstValue > 5"); 
+                    // Prefer make variable for answer - don't use several calling console
                 } else {
                     Console.WriteLine("ifElseFirstValue <= 5");
+                    // Prefer make variable for answer - don't use several calling console
                 }
 
                 int ifElseSecondValue = 49;
