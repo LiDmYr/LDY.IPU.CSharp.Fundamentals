@@ -71,17 +71,12 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
 
                 //while
                 Console.WriteLine("while");
-                string exitWordWhile = "stop";
-                // string inputWordWhile = string.Empty;
-                string inputWordWhile = "stop";
+                // string dataFromService = "data-sha512-key-dasjdha.kjasdAS:LJFOIUJDFJASDiho;sn_dasdgUadgauislgd";
+                string dataFromService = string.Empty;
                 int iterationWhile = 0;
-                while (exitWordWhile != inputWordWhile) {
-                    Console.WriteLine("iteration " + iterationWhile++ + " Write something");
-                    inputWordWhile = Console.ReadLine();
-                    Console.WriteLine("your word is " + inputWordWhile);
-                    if (exitWordWhile == inputWordWhile) {
-                        Console.WriteLine(" => Good bye");
-                    }
+                while (dataFromService.Length < 200) {
+                    Console.WriteLine("iteration " + iterationWhile++ + " getting data");
+                    dataFromService += "askdHJLIA:Y@IHLWDN>ASDH-dahsdlasd";
                 }
 
                 //do...while
