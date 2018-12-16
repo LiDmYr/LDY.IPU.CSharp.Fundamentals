@@ -25,7 +25,7 @@ namespace LDY.UIP.CSharpFundamentals.RouteFinder {
 
             AssignStartPoint(map, startPoint);
 
-            int[][] createdRoute = CreateRouteRecursively(true, map, startPoint, startPoint, finishPoint, 1);
+            int[][] createdRoute = FindRouteRecursively(true, map, startPoint, startPoint, finishPoint, 1);
 
             string resultMessage = 
                 createdRoute == null ?
@@ -36,21 +36,21 @@ namespace LDY.UIP.CSharpFundamentals.RouteFinder {
             return createdRoute;
         }
 
-        private static int[][] CreateRouteRecursively(bool isRootCall, int[][] map, int[] currentPoint, int[] startPoint, int[] finishPoint, int iteration) {
+        private static int[][] FindRouteRecursively(bool isRootCall, int[][] map, int[] currentPoint, int[] startPoint, int[] finishPoint, int iteration) {
             PrintMap(map, iteration);
 
-            bool isFinishReached = false;
             string[] directions = new string[] { "Right", "Left", "Up", "Down" };
 
             foreach (string directionName in directions) {
                 int[] suggestedPointToMove = GetSuggestedPointToMove(map, currentPoint, directionName);
                 bool isDirectionAllowed = IsPointAllowedToMove(map, suggestedPointToMove, startPoint);
-                if (isDirectionAllowed && !isFinishReached) {
-                    MarkPointAsReached(map, suggestedPointToMove);
-                    CreateRouteRecursively(false, map, suggestedPointToMove, startPoint, finishPoint, ++iteration);
+                if (isDirectionAllowed) {
+                    GoToPoint(map, suggestedPointToMove);
+                    FindRouteRecursively(false, map, suggestedPointToMove, startPoint, finishPoint, ++iteration);
                 }
-                isFinishReached = IsFinishReached(map, finishPoint);
-                if (isFinishReached) { return map; }
+                if (IsFinishReached(map, finishPoint)) {
+                    return map;
+                }
             }
                        
             if (!isRootCall) {
@@ -65,14 +65,14 @@ namespace LDY.UIP.CSharpFundamentals.RouteFinder {
             return map[pointY][pointX] == 1;
         }
 
-        private static void MarkPointAsReached(int[][] map, int[] reachedPoint) {
+        private static void GoToPoint(int[][] map, int[] reachedPoint) {
             int pointY = reachedPoint[0];
             int pointX = reachedPoint[1];
             map[pointY][pointX] = 1;
         }
 
         private static void AssignStartPoint(int[][] map, int[] startPoint) {
-            MarkPointAsReached(map, startPoint);
+            GoToPoint(map, startPoint);
         }
 
         private static int[] GetSuggestedPointToMove(int[][] map, int[] currentPoint, string direction) {
