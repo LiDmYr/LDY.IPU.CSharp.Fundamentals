@@ -38,8 +38,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                     new int[] {11,22},
                     new int[] {11,22}
                 };
-
                 var elementjaggedArray = jaggedArray[3];
+
+                var array1 = new int[] { 1, 3, 5, 7, 9, 11 };
+                var array2 = new int[] { 2, 4, 6 };
+                int[][] jaggerArray2 = new int[][] {
+                    array1,
+                    array2
+                };
             }
             #endregion
 
@@ -54,27 +60,40 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                     new int[] {0,2,4,6},
                     new int[] {11,22}
                 };
-                int iteratorFor = 0;
+
                 for (int i = 0; i < jaggedArray.Length; i++) {
                     for (int j = 0; j < jaggedArray[i].Length; j++) {
-                        Console.WriteLine(iteratorFor++ + ")jaggedArray[i][j] = " + jaggedArray[i][j]);
+                        Console.WriteLine($"[{i},{j}] = {jaggedArray[i][j]}");
                     }
                 }
+
+                //continue
+                foreach (int number in new int[] {1, 3, 7, 10} ) {
+                    if (number > 7) {
+                        continue;
+                    }
+                    Console.WriteLine("number" + number);
+                }
+
                 //foreach
                 Console.WriteLine("foreach");
                 int iteratorForeach = 0;
-                foreach (var innerArray in jaggedArray) {
-                    foreach (var itemArray in innerArray) {
-                        Console.WriteLine(iteratorForeach++ + ") itemArray = " + itemArray);
+                int arrayIndex = 0;
+                foreach (int[] innerArray in jaggedArray) {
+                    arrayIndex++;
+                    int elementIndex = 0;
+                    foreach (int itemArray in innerArray) {
+                        elementIndex++;
+                        Console.WriteLine($"[{arrayIndex},{elementIndex}] = {itemArray}");
                     }
                 }
 
                 //while
                 Console.WriteLine("while");
-                // string dataFromService = "data-sha512-key-dasjdha.kjasdAS:LJFOIUJDFJASDiho;sn_dasdgUadgauislgd";
-                string dataFromService = string.Empty;
+                string dataFromService = "data-sha512-key-dasjdha.kjasdAS:LJFOIUJDFJASDiho;sn_dasdgUadgauislgd";
+                // string dataFromService = string.Empty;
                 int iterationWhile = 0;
-                while (dataFromService.Length < 200) {
+                while (dataFromService.Length < 50) {
                     Console.WriteLine("iteration " + iterationWhile++ + " getting data");
                     dataFromService += "askdHJLIA:Y@IHLWDN>ASDH-dahsdlasd";
                 }
@@ -119,6 +138,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 string gottenHellorecursive = GetHelloRecursive("Ivan");
                 Console.WriteLine("gottenHellorecursive = " + gottenHellorecursive);
 
+                // Increment number recursively
+                IncrementNumberRecursively(1);
+
                 //write all arguments
                 WriteAllWhatYouGot("aaa", "bbb", "ccc", "ddd");
 
@@ -157,7 +179,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
 
                 string resultString = stringBuilder2.ToString();
                 Console.WriteLine(resultString);
-
             };
             #endregion
 
@@ -186,6 +207,17 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 name += GetHelloRecursive(name + " " + name);
             }
             return " Hello " + name;
+        }
+
+        private static int IncrementNumberRecursively(int number) {
+            Console.WriteLine("start recursion =" + number);
+            if (number == 5) {
+                return number;
+            }
+            // number = DoSomething(++number);
+            IncrementNumberRecursively(++number);
+            Console.WriteLine("return recursion =" + number);
+            return number;
         }
 
         public static void WriteAllWhatYouGot(params string[] something) {
