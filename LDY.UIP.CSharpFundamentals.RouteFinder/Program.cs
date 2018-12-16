@@ -8,12 +8,12 @@ namespace LDY.UIP.CSharpFundamentals.RouteFinder {
     class Program {
         private static void Main(string[] args) {
             int[][] map = new int[][] {
-                new int[] { 0, 0, -1, 0, 0, 0 },
-                new int[] { 0, 0, 0, 0, -1, 0 },
-                new int[] { -1, -1, 0, -1, -1, -1 },
-                new int[] { 0, 0, 0, 0, 0, 0 },
-                new int[] { 0, -1, -1, -1, -1, 0 },
-                new int[] { 0, 0, 0, 0, 0, 0 },
+                new int[] { 00, 00, -1, 00, 00, 00 },
+                new int[] { 00, 00, 00, 00, -1, 00 },
+                new int[] { -1, -1, 00, -1, -1, -1 },
+                new int[] { 00, 00, 00, 00, 00, 00 },
+                new int[] { 00, -1, -1, -1, -1, -1 },
+                new int[] { 00, 00, 00, 00, 00, 00 },
             };
             int[][] routeOnMap = GetRouteOnMap(map);
             Console.ReadLine();
