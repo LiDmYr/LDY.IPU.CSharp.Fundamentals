@@ -7,7 +7,7 @@
     <ProjectGuid>{F7B92F70-9551-465C-BC8B-A33CEA27BA94}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>LDY.UIP.CSharpFundamentals.RouteFinder</RootNamespace>
-    <AssemblyName>LDY.UIP.CSharpFundamentals.RouteFinder</AssemblyName>
+    <AssemblyName>LDY.UIP.CSharp.Fundamentals.RouteFinder</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

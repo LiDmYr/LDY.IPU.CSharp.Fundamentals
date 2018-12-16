@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class10", "LDY.IPU.CSharp.Fundamentals.Class10\LDY.IPU.CSharp.Fundamentals.Class10.csproj", "{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.UIP.CSharpFundamentals.RouteFinder", "LDY.UIP.CSharpFundamentals.RouteFinder\LDY.UIP.CSharpFundamentals.RouteFinder.csproj", "{F7B92F70-9551-465C-BC8B-A33CEA27BA94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.UIP.CSharp.Fundamentals.RouteFinder", "LDY.UIP.CSharp.Fundamentals.RouteFinder\LDY.UIP.CSharp.Fundamentals.RouteFinder.csproj", "{F7B92F70-9551-465C-BC8B-A33CEA27BA94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
