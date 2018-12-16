@@ -4,6 +4,7 @@ using System.Text;
 namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
     public class Program {
         internal static void Main(string[] args) {
+            QuickSortArray();
             #region Arrays
             if (false) {
                 Console.WriteLine(" --------- arrays");
@@ -240,12 +241,12 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
         #region QuickSortArray
         private static void QuickSortArray() {
             var randomizer = new Random();
-            for (int i = 0; i < 500; i++) {
+            for (int i = 0; i < 10; i++) {
                 Console.WriteLine($"------------i = {i}");
                 int[] randomArray = CreateRandomArray(randomizer);
                 PrintArray("Array BeforeSort", randomArray);
                 int[] sortedArray = SortArrayRecursively(randomArray);
-                PrintArray("Array AfterSort", sortedArray); 
+                PrintArray("Array AfterSort", sortedArray);
             }
         }
 
@@ -257,10 +258,10 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
         }
 
         private static int[] CreateRandomArray(Random randomizer) {
-              int arrayLength = randomizer.Next(10, 20);
+            int arrayLength = randomizer.Next(0, 10000);
             var randomArray = new int[arrayLength];
             for (int i = 0; i < arrayLength; i++) {
-                randomArray[i] = randomizer.Next(0, 100);
+                randomArray[i] = randomizer.Next(0, 100000);
             }
             return randomArray;
         }
