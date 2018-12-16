@@ -68,7 +68,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 }
 
                 //continue
-                foreach (int number in new int[] {1, 3, 7, 10} ) {
+                foreach (int number in new int[] { 1, 3, 7, 10 }) {
                     if (number > 7) {
                         continue;
                     }
@@ -147,6 +147,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 // write array
                 string[] arrayToWrite = new string[] { "aaa", "bbb", "ccc", "ddd" };
                 WriteStringArray(arrayToWrite);
+
+                //QuickSortArray Array recursively
+                QuickSortArray();
             }
             #endregion
 
@@ -233,6 +236,109 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 Console.WriteLine(item);
             }
         }
+
+        #region QuickSortArray
+        private static void QuickSortArray() {
+            var randomizer = new Random();
+            for (int i = 0; i < 500; i++) {
+                Console.WriteLine($"------------i = {i}");
+                int[] randomArray = CreateRandomArray(randomizer);
+                PrintArray("Array BeforeSort", randomArray);
+                int[] sortedArray = SortArrayRecursively(randomArray);
+                PrintArray("Array AfterSort", sortedArray); 
+            }
+        }
+
+        private static void PrintArray(string preText, int[] randomArray) {
+            foreach (var item in randomArray) {
+                preText += " " + item;
+            }
+            Console.WriteLine(preText);
+        }
+
+        private static int[] CreateRandomArray(Random randomizer) {
+              int arrayLength = randomizer.Next(10, 20);
+            var randomArray = new int[arrayLength];
+            for (int i = 0; i < arrayLength; i++) {
+                randomArray[i] = randomizer.Next(0, 100);
+            }
+            return randomArray;
+        }
+
+        private static int[] SortArrayRecursively(int[] arrayToSort) {
+            int[] resultSortedArray;
+
+            if (arrayToSort.Length == 0) {
+                resultSortedArray = new int[0];
+            } else if (arrayToSort.Length == 1) {
+                resultSortedArray = arrayToSort;
+            } else if (arrayToSort.Length == 2) {
+                bool isFirstBigger = arrayToSort[0] > arrayToSort[1];
+                int minValue = isFirstBigger ? arrayToSort[1] : arrayToSort[0];
+                int maxValue = isFirstBigger ? arrayToSort[0] : arrayToSort[1];
+                resultSortedArray = new int[] { minValue, maxValue };
+            } else {
+                int middleElementIndex = arrayToSort.Length / 2;
+                int middleElementValue = arrayToSort[middleElementIndex];
+
+                int[] dividedArray = new int[arrayToSort.Length];
+                int minAssignedIndex = 0;
+                int maxAssignedIndex = arrayToSort.Length - 1;
+
+                int currentForeachIndex = 0;
+                foreach (var item in arrayToSort) {
+                    if (currentForeachIndex != middleElementIndex) {
+                        if (middleElementValue > item) {
+                            dividedArray[minAssignedIndex] = item;
+                            minAssignedIndex++;
+                        } else {
+                            dividedArray[maxAssignedIndex] = item;
+                            maxAssignedIndex--;
+                        }
+                    }
+                    currentForeachIndex++;
+                }
+                int positionMiddleElementAfterSorting = minAssignedIndex;
+                dividedArray[positionMiddleElementAfterSorting] = middleElementValue;
+
+                int[] unsortedFirstPart = GetArrayByStartAndEndIndexes(dividedArray, 0, positionMiddleElementAfterSorting);
+                // RECURSIVE
+                int[] sortedFirstPart = SortArrayRecursively(unsortedFirstPart);
+                int[] unsortedSecondPart = GetArrayByStartAndEndIndexes(dividedArray, positionMiddleElementAfterSorting + 1, dividedArray.Length - 1);
+                // RECURSIVE
+                int[] sortedSecondPart = SortArrayRecursively(unsortedSecondPart);
+
+                resultSortedArray = MergeArrays(sortedFirstPart, sortedSecondPart);
+            }
+
+            return resultSortedArray;
+        }
+
+        private static int[] GetArrayByStartAndEndIndexes(int[] tempArray, int startIndex, int endIndex) {
+            int[] cutArray = new int[endIndex - startIndex + 1];
+            int cutArrayEmptyIndex = 0;
+            for (int i = startIndex; i <= endIndex; i++) {
+                cutArray[cutArrayEmptyIndex] = tempArray[i];
+                cutArrayEmptyIndex++;
+            }
+            return cutArray;
+        }
+
+        private static int[] MergeArrays(int[] sortedFirstPart, int[] sortedSecondPart) {
+            int[] mergedArray = new int[sortedFirstPart.Length + sortedSecondPart.Length];
+            int mergedArrayEmptyIndex = 0;
+            foreach (var item in sortedFirstPart) {
+                mergedArray[mergedArrayEmptyIndex] = item;
+                mergedArrayEmptyIndex++;
+            }
+            foreach (var item in sortedSecondPart) {
+                mergedArray[mergedArrayEmptyIndex] = item;
+                mergedArrayEmptyIndex++;
+            }
+            return mergedArray;
+        }
+        #endregion
+
         #endregion
 
     }
