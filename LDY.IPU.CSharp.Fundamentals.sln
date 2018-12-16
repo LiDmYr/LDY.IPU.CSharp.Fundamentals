@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class10", "LDY.IPU.CSharp.Fundamentals.Class10\LDY.IPU.CSharp.Fundamentals.Class10.csproj", "{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.UIP.CSharpFundamentals.RouteFinder", "LDY.UIP.CSharpFundamentals.RouteFinder\LDY.UIP.CSharpFundamentals.RouteFinder.csproj", "{F7B92F70-9551-465C-BC8B-A33CEA27BA94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B92F70-9551-465C-BC8B-A33CEA27BA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B92F70-9551-465C-BC8B-A33CEA27BA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B92F70-9551-465C-BC8B-A33CEA27BA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B92F70-9551-465C-BC8B-A33CEA27BA94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{1AA6E36D-6C93-4DED-A8A3-4AA6C3FF0A12} = {88474EA4-7F5D-4728-962F-0327C156E6D0}
 		{885B8B1A-DB6F-4B37-B356-E7C82C6058D4} = {CE80E9D8-047B-4D18-AB5E-8D9017BF56D8}
 		{D0C0C5C8-14E5-4C77-8EB7-1BAC6D74E74B} = {6F59F93B-7CEF-40EA-B42C-C3AA5BDFBD3D}
+		{F7B92F70-9551-465C-BC8B-A33CEA27BA94} = {B6A00675-C57C-4E15-B407-F09960B17E4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {388B8C2A-575F-468F-B318-2EAE7CDBD4C0}
