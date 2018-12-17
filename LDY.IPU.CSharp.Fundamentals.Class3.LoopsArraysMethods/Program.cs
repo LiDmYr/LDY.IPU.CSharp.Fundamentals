@@ -268,17 +268,10 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
         private static int[] SortArrayRecursively(int[] arrayToSort) {
             int[] resultSortedArray;
 
-            if (arrayToSort.Length == 0) {
-                resultSortedArray = new int[0];
-            } else if (arrayToSort.Length == 1) {
+            if (arrayToSort.Length == 0 || arrayToSort.Length == 1) {
                 resultSortedArray = arrayToSort;
-            } else if (arrayToSort.Length == 2) {
-                bool isFirstBigger = arrayToSort[0] > arrayToSort[1];
-                int minValue = isFirstBigger ? arrayToSort[1] : arrayToSort[0];
-                int maxValue = isFirstBigger ? arrayToSort[0] : arrayToSort[1];
-                resultSortedArray = new int[] { minValue, maxValue };
             } else {
-                int middleElementIndex = arrayToSort.Length / 2;
+                int middleElementIndex = arrayToSort.Length / 2 - 1;
                 int middleElementValue = arrayToSort[middleElementIndex];
 
                 int[] dividedArray = new int[arrayToSort.Length];
