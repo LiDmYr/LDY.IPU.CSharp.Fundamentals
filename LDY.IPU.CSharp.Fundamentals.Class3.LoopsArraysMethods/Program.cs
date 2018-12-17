@@ -266,11 +266,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
         }
 
         private static int[] SortArrayRecursively(int[] arrayToSort) {
-            int[] resultSortedArray;
-
-            if (arrayToSort.Length == 0 || arrayToSort.Length == 1) {
-                resultSortedArray = arrayToSort;
-            } else {
+            if (arrayToSort.Length > 1) {
                 int middleElementIndex = arrayToSort.Length / 2 - 1;
                 int middleElementValue = arrayToSort[middleElementIndex];
 
@@ -295,16 +291,13 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 dividedArray[positionMiddleElementAfterSorting] = middleElementValue;
 
                 int[] unsortedFirstPart = GetArrayByStartAndEndIndexes(dividedArray, 0, positionMiddleElementAfterSorting);
-                // RECURSIVE
-                int[] sortedFirstPart = SortArrayRecursively(unsortedFirstPart);
+                int[] sortedFirstPart = SortArrayRecursively(unsortedFirstPart); // RECURSIVE
                 int[] unsortedSecondPart = GetArrayByStartAndEndIndexes(dividedArray, positionMiddleElementAfterSorting + 1, dividedArray.Length - 1);
-                // RECURSIVE
-                int[] sortedSecondPart = SortArrayRecursively(unsortedSecondPart);
+                int[] sortedSecondPart = SortArrayRecursively(unsortedSecondPart); // RECURSIVE
 
-                resultSortedArray = MergeArrays(sortedFirstPart, sortedSecondPart);
+                arrayToSort = MergeArrays(sortedFirstPart, sortedSecondPart);
             }
-
-            return resultSortedArray;
+            return arrayToSort;
         }
 
         private static int[] GetArrayByStartAndEndIndexes(int[] tempArray, int startIndex, int endIndex) {
