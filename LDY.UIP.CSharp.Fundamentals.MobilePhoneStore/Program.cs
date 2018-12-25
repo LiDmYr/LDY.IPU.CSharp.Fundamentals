@@ -19,7 +19,7 @@ namespace Test {
             string command = string.Empty; // OR string command = ""; OR string command = null;
             do {
                 command = GetCommandFromInput(commands);
-                ExecuteCommand(command, iphoneShop);
+                ExecuteCommandWithReport(command, iphoneShop);
             } while (command != "quit");
             Console.ReadLine();
         }
@@ -66,43 +66,46 @@ namespace Test {
             }
         }
 
-        private static void ExecuteCommand(string command, MobilePhoneShop iphoneShop) {
+        private static void ExecuteCommandWithReport(string command, MobilePhoneShop iphoneShop) {
+            string reportMessage;
             switch (command) {
                 case "quit": {
-                        Console.WriteLine("=> Thank you. Good bye");
+                        reportMessage = "=> Thank you. Good bye";
                         break;
                     }
                 case "add store to shop": {
-                        AddStoreToShop(iphoneShop);
+                        reportMessage = AddStoreToShop(iphoneShop);
                         break;
                     }
                 case "add phone to store": {
-                        AddPhoneToStore(iphoneShop);
+                        reportMessage = AddPhoneToStore(iphoneShop);
                         break;
                     }
                 case "show all phones in stores": {
-                        PrintStores(iphoneShop, true, true);
+                        reportMessage = PrintStores(iphoneShop, true, true);
                         break;
                     }
                 case "clear console": {
                         Console.Clear();
+                        reportMessage = "=> Console cleared";
                         break;
                     }
                 default: {
-                        Console.WriteLine("=> Wrong command");
+                        reportMessage = "=> Unknown command is called";
                         break;
                     }
             }
+            Console.WriteLine(reportMessage);
         }
 
-        private static void PrintStores(MobilePhoneShop iphoneShop,
+        private static string PrintStores(MobilePhoneShop iphoneShop,
                                         bool isShowPhonesInsideStore,
                                         bool isShowEmptyStores) {
             int currentMobilePhoneStoreIndex = 0;
             if (iphoneShop.MobilePhoneStores.Length == 0) {
                 Console.WriteLine("=> Please Create some stores - iphoneShop.MobilePhoneStores.Length == 0");
             } else {
-                Console.WriteLine($"=> Store in '{iphoneShop.GetDescription()}'");
+                Console.WriteLine($"=> Shop '{iphoneShop.GetDescription()}' has stores:");
                 foreach (var mobilePhoneStore in iphoneShop.MobilePhoneStores) {
                     bool isMobilePhoneStoreEmpty = mobilePhoneStore == null;
                     if (!isShowEmptyStores && isMobilePhoneStoreEmpty) { continue; }
@@ -115,6 +118,7 @@ namespace Test {
                     currentMobilePhoneStoreIndex++;
                 }
             }
+            return $"=> Stores of a Shop '{iphoneShop}' are printed";
         }
 
         private static void PrintAllPhonesInStore(MobilePhoneStore mobilePhoneStore) {
@@ -127,10 +131,10 @@ namespace Test {
             }
         }
 
-        private static void AddStoreToShop(MobilePhoneShop iphoneShop) {
+        private static string AddStoreToShop(MobilePhoneShop iphoneShop) {
             MobilePhoneStore mobilePhoneStore = CreateMobilePhoneStoreFromInput();
             iphoneShop.AddStore(mobilePhoneStore);
-            Console.WriteLine($"=> Shop '{mobilePhoneStore.GetDescription()}' successfully created.");
+            return $"=> Shop '{mobilePhoneStore.GetDescription()}' successfully created.";
         }
 
         private static MobilePhoneStore CreateMobilePhoneStoreFromInput() {
@@ -147,16 +151,15 @@ namespace Test {
             return new MobilePhoneStore(shopAddress, shopCapacity);
         }
 
-        private static void AddPhoneToStore(MobilePhoneShop iphoneShop) {
+        private static string AddPhoneToStore(MobilePhoneShop iphoneShop) {
             if (!IsAnyMobilePhoneStoreAvailable(iphoneShop)) {
-                Console.WriteLine($"=> in {iphoneShop.GetDescription()} no real stores are available. Please add any real store before add a phone.");
-                return;
+                return $"=> in {iphoneShop.GetDescription()} no real stores are available. Please add any real store before add a phone.";
             }
             MobilePhoneStore store = GetMobilePhoneStoreFromInput(iphoneShop);
             MobilePhone mobilePhone = CreatePhoneFromInput();
             bool isPhoneAddedToStore = iphoneShop.AddPhoneToStore(mobilePhone, store.Address);
             string resultMessage = isPhoneAddedToStore ? "successfully added" : "was not added";
-            Console.WriteLine($"=> Phone with {mobilePhone.GetDescription()} {resultMessage} to store '{store.GetDescription()}'.");
+            return $"=> Phone with {mobilePhone.GetDescription()} {resultMessage} to store '{store.GetDescription()}'.";
         }
 
         private static bool IsAnyMobilePhoneStoreAvailable(MobilePhoneShop iphoneShop) {
