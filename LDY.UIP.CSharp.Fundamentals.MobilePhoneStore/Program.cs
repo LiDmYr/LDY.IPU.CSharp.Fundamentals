@@ -16,10 +16,10 @@ namespace Test {
                 "clear console"
             };
             MobilePhoneShop iphoneShop = CreateMobileShopFromInput();
-            string command = string.Empty; // OR string action = "";
+            string command = string.Empty; // OR string command = ""; OR string command = null;
             do {
                 command = GetCommandFromInput(commands);
-                executeCommand(command, iphoneShop);
+                ExecuteCommand(command, iphoneShop);
             } while (command != "quit");
             Console.ReadLine();
         }
@@ -40,13 +40,13 @@ namespace Test {
             do {
                 Console.WriteLine("------- NEW COMMAND ------");
                 Console.WriteLine($"Please write index of command from list below. Commands:");
-                int currentIndex = 0;
-                foreach (var command in commands) {
-                    Console.WriteLine($" [{currentIndex}] = {command}");
-                    currentIndex++;
-                }
+                PrintCommands(commands);
+
                 bool isInputInt = int.TryParse(Console.ReadLine(), out int commandIndexFromInput);
-                bool isValidInputInt = isInputInt && commandIndexFromInput >= 0 && commandIndexFromInput < commands.Length;
+                bool isValidInputInt = 
+                    isInputInt && 
+                    commandIndexFromInput >= 0 && 
+                    commandIndexFromInput < commands.Length;
 
                 if (isValidInputInt) {
                     resultCommand = commands[commandIndexFromInput];
@@ -58,7 +58,15 @@ namespace Test {
             return resultCommand;
         }
 
-        private static void executeCommand(string command, MobilePhoneShop iphoneShop) {
+        private static void PrintCommands(string[] commands) {
+            int currentIndex = 0;
+            foreach (var command in commands) {
+                Console.WriteLine($" [{currentIndex}] = {command}");
+                currentIndex++;
+            }
+        }
+
+        private static void ExecuteCommand(string command, MobilePhoneShop iphoneShop) {
             switch (command) {
                 case "quit": {
                         Console.WriteLine("=> Thank you. Good bye");
@@ -176,7 +184,6 @@ namespace Test {
 
         private static MobilePhoneStore GetMobilePhoneStoreFromInput(MobilePhoneShop mobilePhoneShop) {
             MobilePhoneStore[] mobilePhoneStores = mobilePhoneShop.MobilePhoneStores;
-
             MobilePhoneStore mobilePhoneStore = null;
             do {
                 Console.WriteLine($"Please write index number of mobilePhoneStore from list below. MobilePhoneStores:");
