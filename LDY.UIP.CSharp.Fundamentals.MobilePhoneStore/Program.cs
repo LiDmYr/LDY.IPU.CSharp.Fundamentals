@@ -168,7 +168,7 @@ namespace Test {
                 phoneModel = Console.ReadLine();
             } while (string.IsNullOrWhiteSpace(phoneModel) || phoneModel.Length <= 10);
             do {
-                Console.WriteLine("Please write capacity (number > 0 && number <= 100000) of phones which could be in store");
+                Console.WriteLine("Please write price (number > 0 && number <= 100000) for phone");
                 int.TryParse(Console.ReadLine(), out phonePrice);
             } while (phonePrice <= 0 || phonePrice > 100000);
             return new MobilePhone(phoneModel, phonePrice);
