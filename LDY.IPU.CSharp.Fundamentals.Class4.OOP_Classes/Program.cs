@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes {
     public class Program {
         public static void Main(string[] args) {
+            // 0 Reference type VS Value type
+            if (false) {
+                int[] array = new int[] { 1, 2, 3 };
+                ModifyIntArray(array);
+
+                int valueTypeInt = 10;
+                ModifyInt(valueTypeInt); 
+            }
+
             // 1) Class + Constructor
-            if (true) {
+            if (false) {
                 Person person = new Person();
                 person.Age = 10;
                 Person person1 = new Person();
@@ -46,6 +55,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes {
             // 4) Properties
             if (false) {
                 PersonProperties personProperties = new PersonProperties();
+                int currentAge = personProperties.EncapsulatedAge;
                 personProperties.EncapsulatedAge = 50;
                 personProperties.EncapsulatedAge = -1;
                 personProperties.EncapsulatedAge = 100;
@@ -55,18 +65,37 @@ namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes {
 
             // 5) Constructors with parameters
             if (false) {
-                PersonThisConstructors personThisConstructorsDefault = new PersonThisConstructors();
-                PersonThisConstructors personThisConstructorsName = new PersonThisConstructors("name");
-                PersonThisConstructors personThisConstructorsNameAge = new PersonThisConstructors("name", 20);
+                PersonThisConstructors personThisConstructorsDefault =
+                    new PersonThisConstructors();
+                PersonThisConstructors personThisConstructorsName = 
+                    new PersonThisConstructors("name");
+                PersonThisConstructors personThisConstructorsNameAge = 
+                    new PersonThisConstructors("name", 20);
             }
 
             Console.ReadLine();
         }
+        #region 0 Reference type VS Value type
+        private static void ModifyInt(int valueTypeInt) {
+            valueTypeInt = 100000;
+        }
+
+        private static void ModifyIntArray(int[] array) {
+            for (int i = 0; i <= array.Length - 1; i++) {
+                array[i] = 0;
+            }
+        } 
+        #endregion
     }
 
     #region 1) Class + Constructor
     internal class Person {
         internal int Age;
+
+        internal void AssignAge() {
+            this.Age = 10;
+            Age = 1000;
+        }
     }
     #endregion
 
@@ -118,21 +147,31 @@ namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes {
     class PersonProperties {
         public int AgePublicProperty { get; set; }
 
+        public int AgePublicPropertyGet { get; }
+
+        public int AgePublicField;
+
         public int AgeProtectedProperty { get; protected set; }
 
         public int AgeInternalProperty { get; internal set; }
 
         public int AgePrivateProperty { get; private set; }
 
-        private int _EncapsulatedAge; // don't assign this field directly from inside class
         public int EncapsulatedAge {
-            get { return this._EncapsulatedAge; }
+            get {
+                Console.WriteLine($"Value is gotten");
+                return this._EncapsulatedAge;
+            }
             set {
-                if (value > 0 && value < 100) {
+                if (value > 0 && value < 1000) {
                     this._EncapsulatedAge = value;
+                    Console.WriteLine($"Value is set");
+                } else {
+                    Console.WriteLine($"{value} is not valid");
                 }
             }
         }
+        private int _EncapsulatedAge = -1; // don't assign this field directly from inside class
 
         public PersonProperties() {
 

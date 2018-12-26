@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes.Practice {
     public class AppleShop {
         private AppleStorage[] AppleStorages;
-        private int[] AppleStoragesINT;
 
         public AppleShop() {
             this.AppleStorages = new AppleStorage[] {
