@@ -43,15 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\Factory.cs" />
-    <Compile Include="Factory\FactoryStart.cs" />
-    <Compile Include="Factory\Item.cs" />
-    <Compile Include="Factory\Model\Log.cs" />
-    <Compile Include="Factory\Order.cs" />
-    <Compile Include="Factory\Report.cs" />
-    <Compile Include="Factory\Services\FileHandler.cs" />
-    <Compile Include="Factory\Services\Logger.cs" />
-    <Compile Include="Factory\Worker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

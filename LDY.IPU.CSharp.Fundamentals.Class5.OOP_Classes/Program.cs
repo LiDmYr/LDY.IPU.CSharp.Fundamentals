@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
     internal class Program {
-        private static void aMain(string[] args) {
+        private static void Main(string[] args) {
             // 1) Default values + Null
             if (false) {
                 var personDefaultValueNull = new PersonDefaultValueNull();
@@ -18,23 +18,30 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
             }
 
             // 3) Static Class
-            if (true) {
-                int StaticClassStaticIntBefore = StaticClass.StaticInt;
-                StaticClass.StaticInt = 10;
-                StaticClass.StaticMethod();
+            if (false) {
+                int StaticClassStaticIntBefore = StaticClass.StaticFlag;
+                StaticClass.StaticFlag = 10;
+                StaticClass.IncrementStaticFlagViaMethod();
 
-                //var personNotStaticClass1 = new PersonNotStaticClass();
-                //var personNotStaticClass2 = new PersonNotStaticClass("Name");
-                //var personNotStaticClass3 = new PersonNotStaticClass();
-                //int personsCount = PersonNotStaticClass.PersonsCount;
+                var personNotStaticClass1 = new PersonNotStaticClass();
+                var personNotStaticClass2 = new PersonNotStaticClass("Name");
+                var personNotStaticClass3 = new PersonNotStaticClass();
 
-                PersonNotStaticClass instance1 = PersonNotStaticClass.GetInstance("1");
-                PersonNotStaticClass instance2 = PersonNotStaticClass.GetInstance("2");
+                int personsCount = PersonNotStaticClass.PersonsCount;
+                int PersonsCount1 = personNotStaticClass1.GetPersonsCount();
+                int PersonsCount2 = personNotStaticClass2.GetPersonsCount();
+                int PersonsCount3 = personNotStaticClass3.GetPersonsCount();
+            }
+
+            // 4) Singleton
+            if (false) {
+                PersonSingleton instance1 = PersonSingleton.GetInstance("1");
+                PersonSingleton instance2 = PersonSingleton.GetInstance("2");
                 var name = instance2.Name;
             }
 
-            // 4) ListCollectionUsing
-            if (true) {
+            // 5) ListCollectionUsing
+            if (false) {
                 List<Human> persons = new List<Human>();
                 Human person = new Human("1");
                 Human person2 = new Human("1");
@@ -65,11 +72,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
                 int length = persons.Count;
             }
 
-            // 5) Inheritance
-            //var human = new Human() { Name = "Ivan" };
-            //human.Show();
-            //human = new Worker { Name = "Olena", Salary = 2000 };
-            //human.Show();
+            // 5) Inheritance Begin
+            if (false) {
+                var human = new Human("Ivan");
+                human.ShowSpecificInfo();
+                human.ShowAllInfo();
+                var worker = new Worker(2000, "Olena");
+                worker.ShowSpecificInfo();
+                worker.ShowAllInfo();
+            }
         }
     }
 
@@ -84,10 +95,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
         public bool BoolProperty { get; set; }
 
         public float FloatProperty { get; set; }
-
-        public PersonDefaultValueNull() {
-
-        }
 
         public void ShowPropertiesValues() {
             //Console.WriteLine($"PersonDefaultValueNull_Instance={this.PersonDefaultValueNull_Instance.ToString()}");
@@ -106,67 +113,84 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
 
     #region 3) StaticClass
     public static class StaticClass {
-        public static int StaticInt;
+        public static int StaticFlag;
 
-        public static void StaticMethod() {
-            StaticInt++;
+        public static void IncrementStaticFlagViaMethod() {
+            StaticFlag++;
         }
     }
 
     public class PersonNotStaticClass {
-        //public static int PersonsCount { get; private set; }
-        private static PersonNotStaticClass Instance;
+        public static int PersonsCount { get; private set; }
+
         public string Name { get; private set; }
 
-        private PersonNotStaticClass(string name) {
-            this.Name = name;
-            // PersonsCount++;
+        public PersonNotStaticClass() {
+            Name = "DefaultValue";
         }
-        #region MyRegion
-        //private PersonNotStaticClass(string name) : this() {
-        //    this.Name = name;
-        //}
 
-        //public int GetPersonsCount() {
-        //    return PersonsCount;
-        //} 
-        #endregion
-        // Singleton
-        public static PersonNotStaticClass GetInstance(string name) {
-            // ctor - private;
+        public PersonNotStaticClass(string name) : this() {
+            this.Name = name;
+        }
+
+        public int GetPersonsCount() {
+            // return this.PersonsCount;
+            return PersonsCount;
+        }
+    }
+    #endregion
+
+    #region 4) Singleton
+    public class PersonSingleton {
+        private static PersonSingleton Instance;
+
+        public string Name { get; private set; }
+
+        private PersonSingleton(string name) {
+            this.Name = name;
+        }
+
+        public static PersonSingleton GetInstance(string name) {
             if (Instance == null) {
-                Instance = new PersonNotStaticClass(name);
+                Instance = new PersonSingleton(name);
             }
             return Instance;
         }
-        //Array sort;
     }
     #endregion
 
-    #region 5) Inheritance
+    #region 6) Inheritance Begin
     internal class Human {
         public string Name { get; private set; }
 
-        public Human() {
-
-        }
-        public Human(string v) {
-            this.Name = v;
+        public Human(string name) {
+            this.Name = name;
         }
 
-        public virtual void Show() { Console.WriteLine($"Name = {this.Name}"); }
+        public virtual void ShowSpecificInfo() {
+            Console.WriteLine($"Name = {this.Name}");
+        }
+
+        public virtual void ShowAllInfo() {
+            Console.WriteLine($"Name = {this.Name}");
+        }
     }
 
     internal class Worker : Human {
-        public int Salary { get; set; }
+        public int Salary { get; private set; }
 
-        public override void Show() {
-            base.Show();
+        public Worker(int salary, string name) : base(name) {
+            Salary = salary;
+        }
+
+        public override void ShowSpecificInfo() {
+            base.ShowSpecificInfo();
             Console.WriteLine($"Salary = {this.Salary}");
+        }
+
+        public override void ShowAllInfo() {
+            Console.WriteLine($"Name = {this.Name}, Salary = {this.Salary}");
         }
     }
     #endregion
-
-
-
 }
