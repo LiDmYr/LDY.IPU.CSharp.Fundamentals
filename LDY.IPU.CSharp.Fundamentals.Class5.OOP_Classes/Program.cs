@@ -23,14 +23,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
                 StaticClass.StaticFlag = 10;
                 StaticClass.IncrementStaticFlagViaMethod();
 
-                var personNotStaticClass1 = new PersonNotStaticClass();
+                var personNotStaticClass1 = new PersonNotStaticClass("1");
                 var personNotStaticClass2 = new PersonNotStaticClass("Name");
-                var personNotStaticClass3 = new PersonNotStaticClass();
+                var personNotStaticClass3 = new PersonNotStaticClass("2");
 
                 int personsCount = PersonNotStaticClass.PersonsCount;
                 int PersonsCount1 = personNotStaticClass1.GetPersonsCount();
                 int PersonsCount2 = personNotStaticClass2.GetPersonsCount();
                 int PersonsCount3 = personNotStaticClass3.GetPersonsCount();
+                int personsCountStatic = PersonNotStaticClass.GetPersonsCountStatic();
             }
 
             // 4) Singleton
@@ -42,43 +43,31 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
 
             // 5) ListCollectionUsing
             if (false) {
-                List<Human> persons = new List<Human>();
-                Human person = new Human("1");
-                Human person2 = new Human("1");
-                List<Human> subPersons = new List<Human>();
-                //subPersons = new List<Human>() {
-                //    new Human("2"),
-                //    new Human("3"),
-                //    new Human("2"),
-                //    new Human("3"),
-                //    new Human("2"),
-                //    new Human("3"),
-                //    new Human("2"),
-                //    new Human("3")
-                //};
+                List<Human> persons1 = new List<Human>();
                 for (int i = 0; i < 3; i++) {
-                    subPersons.Add(new Human(i.ToString()));
+                    persons1.Add(new Human("Name_list1_" + i));
                 }
-
+                List<Human> persons2 = new List<Human>();
                 for (int i = 0; i < 40; i++) {
-                    subPersons.Add(new Human(i.ToString()));
+                    persons2.Add(new Human("Name_list2_" + i.ToString()));
                 }
 
-                persons.Sort();
+                var human = new Human("Added by hand");
+                persons1.Add(human);
 
-                persons.Add(person);
-                //persons.AddRange(subPersons);
-                persons.Remove(null);
-                int length = persons.Count;
+                persons1.AddRange(persons2);
+                persons1.Remove(human);
+
+                int length = persons1.Count;
             }
 
             // 5) Inheritance Begin
             if (false) {
                 var human = new Human("Ivan");
-                human.ShowSpecificInfo();
+                human.ShowSpecificToCurrentTypeInfo();
                 human.ShowAllInfo();
                 var worker = new Worker(2000, "Olena");
-                worker.ShowSpecificInfo();
+                worker.ShowSpecificToCurrentTypeInfo();
                 worker.ShowAllInfo();
             }
         }
@@ -125,17 +114,22 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
 
         public string Name { get; private set; }
 
-        public PersonNotStaticClass() {
-            Name = "DefaultValue";
-        }
-
-        public PersonNotStaticClass(string name) : this() {
+        public PersonNotStaticClass(string name) {
             this.Name = name;
+            PersonsCount++;
         }
 
         public int GetPersonsCount() {
-            // return this.PersonsCount;
             return PersonsCount;
+        }
+
+        public static int GetPersonsCountStatic() {
+            return PersonsCount;
+        }
+
+
+        public static string GetNameStatic(PersonNotStaticClass person) {
+            return person.Name;
         }
     }
     #endregion
@@ -167,24 +161,23 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
             this.Name = name;
         }
 
-        public virtual void ShowSpecificInfo() {
-            Console.WriteLine($"Name = {this.Name}");
+        public virtual void ShowSpecificToCurrentTypeInfo() {
+            Console.WriteLine($"ShowSpecificInfo: Name = {this.Name}");
         }
 
         public virtual void ShowAllInfo() {
-            Console.WriteLine($"Name = {this.Name}");
+            Console.WriteLine($"ShowAllInfo: Name = {this.Name}");
         }
     }
 
     internal class Worker : Human {
         public int Salary { get; private set; }
 
-        public Worker(int salary, string name) : base(name) {
+        public Worker(int salary, string name) : base(name)  {
             Salary = salary;
         }
 
-        public override void ShowSpecificInfo() {
-            base.ShowSpecificInfo();
+        public override void ShowSpecificToCurrentTypeInfo() {
             Console.WriteLine($"Salary = {this.Salary}");
         }
 
