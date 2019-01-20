@@ -60,16 +60,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
 
                 int length = persons1.Count;
             }
-
-            // 5) Inheritance Begin
-            if (false) {
-                var human = new Human("Ivan");
-                human.ShowSpecificToCurrentTypeInfo();
-                human.ShowAllInfo();
-                var worker = new Worker(2000, "Olena");
-                worker.ShowSpecificToCurrentTypeInfo();
-                worker.ShowAllInfo();
-            }
         }
     }
 
@@ -153,7 +143,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
     }
     #endregion
 
-    #region 6) Inheritance Begin
+    #region 5) ListCollectionUsing
     internal class Human {
         public string Name { get; private set; }
 
@@ -169,21 +159,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
             Console.WriteLine($"ShowAllInfo: Name = {this.Name}");
         }
     }
-
-    internal class Worker : Human {
-        public int Salary { get; private set; }
-
-        public Worker(int salary, string name) : base(name)  {
-            Salary = salary;
-        }
-
-        public override void ShowSpecificToCurrentTypeInfo() {
-            Console.WriteLine($"Salary = {this.Salary}");
-        }
-
-        public override void ShowAllInfo() {
-            Console.WriteLine($"Name = {this.Name}, Salary = {this.Salary}");
-        }
-    }
     #endregion
+
 }
