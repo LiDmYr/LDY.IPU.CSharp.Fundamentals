@@ -23,6 +23,8 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
         }
 
         public void UnPlugChildDevice() {
+            if (Child == null) { return; }
+            Child.GeneratorParent = null;
             Child = null;
         }
     }
