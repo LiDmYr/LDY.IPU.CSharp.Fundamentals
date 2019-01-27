@@ -12,6 +12,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
 
         internal void PlugDevice(Device child) {
             if (Child != null) {
+                Console.WriteLine($"Generator Already has Child");
                 return;
             }
             if (ProducedPower < child.GetConsumptionedPowerWithChilds()) {

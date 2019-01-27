@@ -5,6 +5,10 @@ using System.Collections.Generic;
 namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
     public class Program {
         private static void Main(string[] args) {
+            new ElectricWorker().DoWork();
+
+
+
             // 1) Inheritance override
             var dog0 = new Dog() { Age = 1, Weight = 10, Name = "Dog-Clark" };
             var duck0 = new Duck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };

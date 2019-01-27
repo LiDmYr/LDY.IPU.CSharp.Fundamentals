@@ -34,11 +34,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
             int consumptionedPowerWithChilds3 = devices[3].GetConsumptionedPowerWithChilds();
             int consumptionedPowerWithChilds4 = devices[4].GetConsumptionedPowerWithChilds();
 
+            devices[2].UnPlugChildDevice();
+
             // UNPLUG
             generator.UnPlugChildDevice();
             foreach (var item in devices) {
                 item.UnPlugChildDevice();
             }
+
+
+
         }
     }
 }

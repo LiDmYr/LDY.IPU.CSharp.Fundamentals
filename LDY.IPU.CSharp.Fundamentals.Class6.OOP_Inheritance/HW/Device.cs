@@ -8,18 +8,28 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
     public class Device {
         public readonly int Id;
 
-        private static int IdCounter = 0;
+        private static int IdCounter = -1;
 
         public Generator GeneratorParent { get; set; }
 
         public Device Parent { get; set; }
 
+        ///public IPowerProvider Parent { get; set; }
+
         public Device Child { get; private set; }
 
-        public int ConsumptionPower { get; private set; } = 270;
+        public int ConsumptionPower { get; private set; } = 100;
 
         public Device() {
+            GenerateInitialStateForId();
             Id = ++IdCounter;
+        }
+
+        private static void GenerateInitialStateForId() {
+            if (IdCounter == -1) {
+                var r = new Random();
+                IdCounter = r.Next(0, 100);
+            }
         }
 
         public void PlugDevice(Device child) {
@@ -38,8 +48,10 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
 
         public void UnPlugChildDevice() {
             if (Child == null) { return; }
+            Child.UnPlugChildDevice();
             Child.Parent = null;
             Child = null;
+
         }
 
         public int GetLeftPower() {
@@ -56,5 +68,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
             return Child == null? ConsumptionPower : ConsumptionPower + Child.GetConsumptionedPowerWithChilds();
         }
 
+
+        public override string ToString() {
+            return this.Id.ToString();
+        }
     }
 }
