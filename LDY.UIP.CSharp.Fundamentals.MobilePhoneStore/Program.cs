@@ -1,5 +1,4 @@
-﻿using LDY.IPU.CSharp.Fundamentals.Class4.OOP_Classes.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
