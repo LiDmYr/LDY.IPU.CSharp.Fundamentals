@@ -43,16 +43,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
                 if (true) {
                     // 1.1.1) ReferenceType
                     bool isReferenceEquals_ReferenceType_WithoutOverriden_1_2 =
-                        object.ReferenceEquals(workerWithoutOverridenEquals_1, workerWithoutOverridenEquals_2);
+                        Object.ReferenceEquals(workerWithoutOverridenEquals_1, workerWithoutOverridenEquals_2);
                     bool isReferenceEquals_ReferenceType_WithOverriden_1_2 =
-                        object.ReferenceEquals(workerWithOverridenEquals_1, workerWithOverridenEquals_2);
+                        Object.ReferenceEquals(workerWithOverridenEquals_1, workerWithOverridenEquals_2);
                     bool isReferenceEquals_ReferenceType_1_1 =
-                        object.ReferenceEquals(workerWithOverridenEquals_1, workerWithOverridenEquals_1);
+                        Object.ReferenceEquals(workerWithOverridenEquals_1, workerWithOverridenEquals_1);
                     // 1.1.2) ValueType
                     bool isReferenceEquals_ValueType_1_2 =
-                        object.ReferenceEquals(pointWithoutOverridenEquals_0_0_1, pointWithoutOverridenEquals_0_0_2);
+                        Object.ReferenceEquals(pointWithoutOverridenEquals_0_0_1, pointWithoutOverridenEquals_0_0_2);
                     bool isReferenceEquals_ValueType_1_1 =
-                        object.ReferenceEquals(pointWithoutOverridenEquals_0_0_1, pointWithoutOverridenEquals_0_0_1);
+                        Object.ReferenceEquals(pointWithoutOverridenEquals_0_0_1, pointWithoutOverridenEquals_0_0_1);
                     // HW boxing/Unboxing
                     // 1.1.3) String
                     bool isReferenceEquals_String_1_2 = object.ReferenceEquals(string1_1, string2);
@@ -65,23 +65,22 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
                 // 1.2) public virtual bool Equals(object obj)
                 if (true) {
                     // 1.2.1) ReferenceType
-                    bool isReferenceEquals_ReferenceType_WithoutOverriden_1_2 =
+                    bool isEquals_ReferenceType_WithoutOverriden_1_2 =
                         workerWithoutOverridenEquals_1.Equals(workerWithoutOverridenEquals_2);
-                    bool isReferenceEquals_ReferenceType_WithOverriden_1_2 =
+                    bool isEquals_ReferenceType_WithOverriden_1_2 =
                         workerWithOverridenEquals_1.Equals(workerWithOverridenEquals_2);
-                    bool isReferenceEquals_ReferenceType_1_1 =
+                    bool isEquals_ReferenceType_1_1 =
                         workerWithOverridenEquals_1.Equals(workerWithOverridenEquals_1);
                     // 1.2.2) ValueType
-                    bool isReferenceEquals_ValueType_WithoutOverriden_1_2 =
+                    bool isEquals_ValueType_WithoutOverriden_1_2 =
                         pointWithoutOverridenEquals_0_0_1.Equals(pointWithoutOverridenEquals_0_0_2);
-                    bool isReferenceEquals_ValueType_WithoutOverriden_1_1 =
-                        pointWithoutOverridenEquals_0_0_1.Equals(pointWithoutOverridenEquals_0_0_1);
+                    bool isEquals_ValueType_WithoutOverriden_1_1 =
+                        pointWithoutOverridenEquals_0_0_1.Equals(new PointWithoutOverridenEquals(0, 0, 1));
 
-                    bool isReferenceEquals_ValueType_WithOverriden_1_2 =
+                    bool isEquals_ValueType_WithOverriden_1_2 =
                         pointWithOverridenEquals_0_0_1.Equals(pointWithOverridenEquals_0_0_2);
-                    bool isReferenceEquals_ValueType_WithOverriden_1_1 =
-                        pointWithOverridenEquals_0_0_1.Equals(pointWithOverridenEquals_0_0_1);
-                    // HW boxing/Unboxing
+                    bool isEquals_ValueType_WithOverriden_1_1 =
+                        pointWithOverridenEquals_0_0_1.Equals(new PointWithoutOverridenEquals(0, 0, 1));
                     // 1.2.3) String
                     bool isReferenceEquals_String_1_2 = string1_1.Equals(string2);
                     bool isReferenceEquals_String_1_1_vs_1_1 = string1_1.Equals(string1_1);
@@ -101,14 +100,18 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
             }
             //2 Override operations
             if (true) {
-                PointWithOverridenEquals minusPoint = pointWithOverridenEquals_0_0_1 - pointWithOverridenEquals_0_0_2;
+                PointWithOverridenEquals minusPoint = new PointWithOverridenEquals(5, 5, 0) - new PointWithOverridenEquals(3, 3, 1);
 
-                PointWithOverridenEquals plusPoint = pointWithOverridenEquals_0_0_1 + pointWithOverridenEquals_0_0_2;
+                PointWithOverridenEquals plusPoint = new PointWithOverridenEquals(5, 5, 0) + new PointWithOverridenEquals(3, 3, 1);
                 // TODO: Show Point
 
                 WorkerWithOverridenEquals workerPlus = workerWithOverridenEquals_1 - workerWithOverridenEquals_2;
 
                 WorkerWithOverridenEquals minusWorker = workerWithOverridenEquals_1 + workerWithOverridenEquals_2;
+
+                bool isBigger = new WorkerWithOverridenEquals() { Name= "1" } > new WorkerWithOverridenEquals() { Name = "12" };
+
+                bool isLess = new WorkerWithOverridenEquals() { Name = "1" } < new WorkerWithOverridenEquals() { Name = "12" };
             }
         }
     }

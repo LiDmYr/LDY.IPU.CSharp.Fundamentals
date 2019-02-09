@@ -41,7 +41,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
         }
 
         public static PointWithOverridenEquals operator +(PointWithOverridenEquals p1, PointWithOverridenEquals p2) {
-            return new PointWithOverridenEquals(p1.X + p2.Y, p1.X + p2.Y, p1.Id + p2.Id);
+            return new PointWithOverridenEquals(p1.X + p2.X, p1.Y + p2.Y, p1.Id + p2.Id);
         }
 
         public static PointWithOverridenEquals operator -(PointWithOverridenEquals p1, PointWithOverridenEquals p2) {

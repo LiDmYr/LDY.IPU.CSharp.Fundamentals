@@ -15,7 +15,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
         }
     }
 
-
     public class WorkerWithoutOverridenEquals : Worker {
 
     }
