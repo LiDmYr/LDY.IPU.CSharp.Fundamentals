@@ -7,14 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class10.Models {
-    [Serializable]
+    // [Serializable]
     [Custom("LDY1", DeclaredAt = "12.10.2020")]
     [Custom("LDY2", DeclaredAt = "12.10.2020")]
+
     public class LogRecord {
+        public LogRecord NestedLogRecord { get; set; }
+
+        public List<LogRecord> NestedLogRecords { get; set; }
+
         [JsonIgnore]
         public string Password { get; set; }
 
-        public DateTime CreatedAt { get; set; }
+        [JsonIgnore]
+        public DateTime CreatedAt { get; }
 
         public string Message { get; set; }
 

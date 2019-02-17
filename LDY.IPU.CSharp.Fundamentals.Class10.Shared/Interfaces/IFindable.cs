@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LDY.IPU.CSharp.Fundamentals.Class10.Interfaces {
+namespace LDY.IPU.CSharp.Fundamentals.Class10.Shared.Interfaces {
     public interface IFindable {
         string Name { get; }
 
         int Number { get; }
+
+        void SaySomething();
     }
 }

@@ -1,10 +1,11 @@
-﻿#define var1
-//#define var2
+﻿//#define var1
+#define var2
 
 using LDY.IPU.CSharp.Fundamentals.Class10.Attributes;
 using LDY.IPU.CSharp.Fundamentals.Class10.Interfaces;
 using LDY.IPU.CSharp.Fundamentals.Class10.Models;
 using LDY.IPU.CSharp.Fundamentals.Class10.Services;
+using LDY.IPU.CSharp.Fundamentals.Class10.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class10 {
@@ -36,12 +38,17 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
             }
 
             // 2 Serialization
-            if (true) {
+            if (false) {
                 var serializer = new JSONSerializer();
 
                 // One LogRecord
-                string serializedLogRecord = serializer.Serialize(new LogRecord() { Message = "M1", Password = "***1" });
+                var logRecordToSerialize = new LogRecord() { Message = "M1", Password = "***1" };
+                logRecordToSerialize.NestedLogRecord = new LogRecord() { Message = "M2", Password = "***2" };
+                // USE FOR EXAMPLE LATER logRecordToSerialize.NestedLogRecords = logRecords;
+                string serializedLogRecord = serializer.Serialize(logRecordToSerialize);
+                ///// BELOW CODE IS SOMEWHERE AWAY FROM PREVIOUS CODE
                 var deserializedLogRecord = serializer.Deserialize<LogRecord>(serializedLogRecord);
+                bool isEqual = logRecordToSerialize.Equals(deserializedLogRecord);
 
                 //List LogRecord
                 var logRecords = new List<LogRecord>() {
@@ -56,42 +63,56 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
 
             //3 Assemblies
             if (false) {
-                string path = @"C:\Users\workspace\source\repos\LDY.IPU.CSharp.Fundamentals\Libraries";
-                string[] fileEntries = Directory.GetFiles(path, "*.dll");
+                for (int i = 0; i < 5; i++) {
+                    Console.WriteLine("--------------------------------------");
 
-                List<IFindable> interfaces = new List<IFindable>();
+                    string path = @"C:\Users\workspace\source\repos\LDY.IPU.CSharp.Fundamentals\Libraries";
+                    string[] fileEntries = Directory.GetFiles(path, "*.dll");
 
-                foreach (var file in fileEntries) {
-                    Assembly assembly = Assembly.LoadFrom(file);
-                    Type[] types = assembly.GetExportedTypes();
+                    List<IFindable> interfaces = new List<IFindable>();
 
-                    foreach (TypeInfo type in types) {
-                        IEnumerable<Type> implementedInterfaces = type.ImplementedInterfaces;
+                    foreach (var file in fileEntries) {
+                        Assembly assembly = Assembly.LoadFrom(file);
+                        Type[] types = assembly.GetExportedTypes();
 
-                        bool isImplementedRequiredInterface = false;
-                        foreach (Type implementedInterface in implementedInterfaces) {
-                            if (implementedInterface.FullName == "LDY.IPU.CSharp.Fundamentals.Class10.Interfaces.IFindable") {
-                                isImplementedRequiredInterface = true;
-                                break;
+                        foreach (TypeInfo type in types) {
+                            IEnumerable<Type> implementedInterfaces = type.ImplementedInterfaces;
+
+                            bool isImplementedRequiredInterface = false;
+                            foreach (Type implementedInterface in implementedInterfaces) {
+                                if (implementedInterface.FullName == typeof(IFindable).FullName) {
+                                    isImplementedRequiredInterface = true;
+                                    break;
+                                }
+                            }
+
+                            if (isImplementedRequiredInterface) {
+                                IFindable instance;
+                                try {
+                                    instance = (IFindable)Activator.CreateInstance(type);
+                                    interfaces.Add(instance);
+                                } catch (Exception) {
+                                    //
+                                }
                             }
                         }
-
-                        if (isImplementedRequiredInterface) {
-                            var instance = (IFindable)Activator.CreateInstance(type, 1);
-                            interfaces.Add(instance);
-                        }
                     }
+
+                    foreach (var interfaceInstance in interfaces) {
+                        interfaceInstance.SaySomething();
+                    }
+
+                    Thread.Sleep(5000);
                 }
             }
 
             // 4 Directives
-            if (false) {
+            if (true) {
                 WriteSomethingRule1();
                 WriteSomethingRule2();
                 DebugMethod();
                 ReleaseMethod();
             }
-
             Console.ReadLine();
         }
 
