@@ -7,11 +7,11 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
             #region Arrays
             if (false) {
                 Console.WriteLine(" --------- arrays");
-                int[] firstNumberArray0 = new int[] { };
-                int[] firstNumberArray = new int[4] { 1, 2, 3, 5 };
+                int[] firstNumberArray0 = new int[0];
+                int[] firstNumberArray = new int[4] { 1, 2, 3, 5};
                 int[] secondNumberarray = new int[] { 1, 2, 3, 5 };
-                int[] thirdnumberarray = new[] { 1, 2, 3, 5 };
-                int[] fourthnumberarray = { 1, 2, 3, 5 };
+                int[] thirdNumberarray = new[] { 1, 2, 3, 5 };
+                int[] fourthNumberarray = { 1, 2, 3, 5 };
                 int[] fifthNumberArray = new int[4];
                 fifthNumberArray[0] = 1;
                 fifthNumberArray[1] = 2;
@@ -32,17 +32,17 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
 
                 int[][] jaggedArray = new int[][]
                 {
-                    new int[] {1,3,5,7,9},
-                    new int[] {10,2,4,6},
-                    new int[] {11,22},
-                    new int[] {11,22},
-                    new int[] {11,22}
+                    new int[] { 1, 3, 5, 7, 9 },
+                    new int[] { 10, 2, 4, 6 },
+                    new int[] { 11, 22 },
+                    new int[] { 11, 22 },
+                    new int[] { 11, 22 }
                 };
                 var elementjaggedArray = jaggedArray[3];
 
                 var array1 = new int[] { 1, 3, 5, 7, 9, 11 };
                 var array2 = new int[] { 2, 4, 6 };
-                int[][] jaggerArray2 = new int[][] {
+                int[][] jaggedArray2 = new int[][] {
                     array1,
                     array2
                 };
@@ -60,19 +60,13 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                     new int[] {0,2,4,6},
                     new int[] {11,22}
                 };
-
+                //for ([инициализация счетчика]; [условие]; [изменение счетчика]) { 
+                //   действия
+                //}
                 for (int i = 0; i < jaggedArray.Length; i++) {
                     for (int j = 0; j < jaggedArray[i].Length; j++) {
                         Console.WriteLine($"[{i},{j}] = {jaggedArray[i][j]}");
                     }
-                }
-
-                //continue
-                foreach (int number in new int[] { 1, 3, 7, 10 }) {
-                    if (number > 7) {
-                        continue;
-                    }
-                    Console.WriteLine("number" + number);
                 }
 
                 //foreach
@@ -86,6 +80,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                         elementIndex++;
                         Console.WriteLine($"[{arrayIndex},{elementIndex}] = {itemArray}");
                     }
+                }
+
+                //continue
+                foreach (int number in new int[] { 1, 3, 7, 10 }) {
+                    if (number > 7) {
+                        continue;
+                    }
+                    Console.WriteLine("number" + number);
                 }
 
                 //while
