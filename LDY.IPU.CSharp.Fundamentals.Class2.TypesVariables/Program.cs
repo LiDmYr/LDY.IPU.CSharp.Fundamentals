@@ -75,7 +75,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Constants
             if (false) {
                 Console.WriteLine(" --------- Constants");
-                const int firstConstant = 10;
+                const int FIRSTCONSTANT = 10;
                 // 1) initialization is required; 2) it is not possible to change value; 
             }
             #endregion
@@ -114,6 +114,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Class Math
             if (false) {
                 Console.WriteLine(" --------- Class Math");
+
+                Console.WriteLine($" --------- Math.Pi = {Math.PI}");
+
                 double MathAbs_12point4 = Math.Abs(-12.4);
                 Console.WriteLine("MathAbs_12point4 = " + MathAbs_12point4);
 
@@ -146,7 +149,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Equality Operators and Less\Greater than
             if (false) {
                 Console.WriteLine(" --------- Equality Operators and Less\\Greater than");
-                var comparisonResult1 = 2 < 10;
+                bool comparisonResult1 = 2 < 10; // true
                 Console.WriteLine("2 < 10 : " + comparisonResult1);
 
                 var comparisonResult2 = 2 <= 10;
@@ -169,7 +172,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #region Logic operations
             if (false) {
                 Console.WriteLine(" --------- Logic operations");
-                var logicalAND_true_true = true && true;
+                bool logicalAND_true_true = true && true;
                 Console.WriteLine("logicalAND_true_true = " + logicalAND_true_true);
 
                 var logicalAND_true_false = true && false;
@@ -192,17 +195,28 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
 
                 var logicalOR_false_false = false || false;
                 Console.WriteLine("logicalOR_false_false = " + logicalOR_false_false);
+
+                Console.WriteLine("--- &&");
+                bool is1 = GetFalse() && GetTrue();
+                Console.WriteLine("--- &");
+                bool is2 = GetFalse() & GetTrue();
+                Console.WriteLine("--- ||");
+                bool is3 = GetTrue() || GetTrue();
+                Console.WriteLine("--- |");
+                bool is4 = GetTrue() | GetTrue();
+                Console.WriteLine("---");
             }
             #endregion
 
             #region Conditional operators
             if (false) {
                 Console.WriteLine(" --------- Conditional operators");
-                // if {...} else {...}
+
+                // if (bool...) {true=>...} else {fales=>...}
                 int ifElseFirstValue = 10;
                 Console.WriteLine("START: ifElseFirstValue = " + ifElseFirstValue);
                 if (ifElseFirstValue > 5) {
-                    Console.WriteLine("ifElseFirstValue > 5"); 
+                    Console.WriteLine("ifElseFirstValue > 5");
                     // Prefer make variable for answer - don't use several calling console
                 } else {
                     Console.WriteLine("ifElseFirstValue <= 5");
@@ -229,7 +243,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 }
                 Console.WriteLine(secondResultString);
 
-                int ifElseThirdValue = 10;
+                int ifElseThirdValue = 1001;
                 string thirdResultString = "";
                 if (ifElseThirdValue > 0 && ifElseThirdValue < 100) {
                     thirdResultString = "ifElseThirdValue > 0 && ifElseThirdValue < 100";
@@ -245,9 +259,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 // switch
                 string color = "green";
                 switch (color) {
-                    case "blue":
-                        Console.WriteLine("I like " + color + " color");
-                        break;
+                    case "empty":
+                    case "": {
+                            Console.WriteLine("color is empty");
+                            break;
+                        }
+                    case "blue": {
+                            Console.WriteLine("I like " + color + " color");
+                            break;
+                        }
                     case "green":
                         Console.WriteLine("I love " + color + " color");
                         break;
@@ -276,24 +296,25 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
                 Console.WriteLine("intVariableWidening = " + intVariableWidening);
 
                 // narrowing - explicit conversion
-                int intVariableNarrowing = 257;
-                byte byteVariableNarrowing = (byte)(intVariableNarrowing);
+                int intVariableNarrowing = 256; //256 + 3;
+                byte byteVariableNarrowing = (byte)intVariableNarrowing;
                 Console.WriteLine("byteVariableNarrowing = " + byteVariableNarrowing);
 
                 // Convert - for implementation interface IConvertable
                 try {
-                    int m = Convert.ToInt32("abc");
+                    int m = Convert.ToInt32("1000");
                 } catch (FormatException e) {
                     Console.WriteLine("int m = Convert.ToInt32('abc');");
                     Console.WriteLine(e.Message);
                 }
                 // Parse
                 try {
-                    int m = Int32.Parse("abc");
+                    double m = Int32.Parse("abc");
                 } catch (FormatException e) {
                     Console.WriteLine("int m = Int32.Parse('abc');");
                     Console.WriteLine(e.Message);
                 }
+
                 //TryParse
                 int tryParseValid;
                 bool tryParseBool = int.TryParse("abc", out tryParseValid);
@@ -311,6 +332,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class2.TypesVariables {
             #endregion
 
             Console.ReadLine();
+        }
+
+        private static bool GetFalse() {
+            Console.WriteLine("GetFalse");
+            return false;
+        }
+
+        private static bool GetTrue() {
+            Console.WriteLine("GetTrue");
+            return true;
         }
     }
 }
