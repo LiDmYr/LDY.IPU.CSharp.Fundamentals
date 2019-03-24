@@ -8,7 +8,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
             if (false) {
                 Console.WriteLine(" --------- arrays");
                 int[] firstNumberArray0 = new int[0];
-                int[] firstNumberArray = new int[4] { 1, 2, 3, 5};
+                int[] firstNumberArray = new int[4] { 1, 2, 3, 5 };
                 int[] secondNumberarray = new int[] { 1, 2, 3, 5 };
                 int[] thirdNumberarray = new[] { 1, 2, 3, 5 };
                 int[] fourthNumberarray = { 1, 2, 3, 5 };
@@ -92,12 +92,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
 
                 //while
                 Console.WriteLine("while");
-                string dataFromService = "data-sha512-key-dasjdha.kjasdAS:LJFOIUJDFJASDiho;sn_dasdgUadgauislgd";
+                string dataFromService = "data-sha512-key-dasjdhad";
+
                 // string dataFromService = string.Empty;
-                int iterationWhile = 0;
+                //int iterationWhile = 0;
                 while (dataFromService.Length < 50) {
-                    Console.WriteLine("iteration " + iterationWhile++ + " getting data");
-                    dataFromService += "askdHJLIA:Y@IHLWDN>ASDH-dahsdlasd";
+                    Console.WriteLine($"BEFORE {dataFromService}");
+                    //Console.WriteLine("iteration " + iterationWhile++ + " getting data");
+                    dataFromService += "askdHJLIA:Y@IHLW";
+                    Console.WriteLine($"AFTER {dataFromService}");
                 }
 
                 //do...while
@@ -119,7 +122,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
             #endregion
 
             #region Methods
-            if (false) {
+            if (true) {
+                var randomizer = new Random();
+
+                for (int i = 0; i < 10 ; i++) {
+                    //int = args 
+                    int resultSum = CalculateSum(randomizer.Next(0, 10), randomizer.Next(0, 10));
+                    Console.WriteLine($"resultSum = {resultSum}");
+                }
+
                 Console.WriteLine(" --------- Methods");
                 //void method
                 SayHello();
@@ -130,6 +141,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
 
                 // pass argument
                 string gottenHelloWithName = GetHelloWithName("Ivan");
+                string gottenHelloWithNameEmptyArg = GetHelloWithName(" ");
                 Console.WriteLine("gottenHelloWithName = " + gottenHelloWithName);
 
                 // overload - the same name with different count of arguments
@@ -137,14 +149,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
                 Console.WriteLine("gottenHelloWithNames = " + gottenHelloWithNames);
 
                 // get recursive hello
-                string gottenHellorecursive = GetHelloRecursive("Ivan");
+                string gottenHellorecursive = GetHelloRecursive("AAAAA");
                 Console.WriteLine("gottenHellorecursive = " + gottenHellorecursive);
 
                 // Increment number recursively
                 IncrementNumberRecursively(1);
 
                 //write all arguments
-                WriteAllWhatYouGot("aaa", "bbb", "ccc", "ddd");
+                WriteAllWhatYouGot("aaa1", "bbb1", "ccc1", "ddd1");
+                WriteAllWhatYouGot("aaa2");
+                WriteAllWhatYouGot("aaa3", "bbb3", "ccc3");
 
                 // write array
                 string[] arrayToWrite = new string[] { "aaa", "bbb", "ccc", "ddd" };
@@ -190,26 +204,37 @@ namespace LDY.IPU.CSharp.Fundamentals.Class3.LoopsArraysMethods {
             Console.ReadLine();
         }
 
-        #region MethodsImplementation
-        private static void SayHello() {
-            Console.WriteLine("Hello World");
+        static int CalculateSum(int a1, int a2) {
+            int sum = a1 + a2;
+            return sum;
         }
 
-        private static string GetHello() {
+        #region MethodsImplementation
+        static void SayHello() {
+            Console.WriteLine("Hello World");
+            return;
+        }
+
+        static string GetHello() {
             return "Hello Mark";
         }
 
-        private static string GetHelloWithName(string name) {
+        static string GetHelloWithName(string name) {
+            if (string.IsNullOrWhiteSpace(name)) {
+                return "WrongName";
+            }
             return "Hello " + name;
         }
 
-        private static string GetHelloWithName(string nameOne, string nameTwo) {
+        static string GetHelloWithName(string nameOne, string nameTwo) {
             return "Hello " + nameOne + "+" + nameTwo;
         }
 
-        private static string GetHelloRecursive(string name) {
+        static string GetHelloRecursive(string name) {
             if (name.Length < 20) {
-                name += GetHelloRecursive(name + " " + name);
+                string increasedNameByRecursion = GetHelloRecursive(name + "_" + name);
+                name = name + increasedNameByRecursion;
+                //name += GetHelloRecursive(name + " " + name);
             }
             return " Hello " + name;
         }
