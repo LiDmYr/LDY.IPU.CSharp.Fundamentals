@@ -5,19 +5,27 @@ using System.Collections.Generic;
 namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
     public class Program {
         private static void Main(string[] args) {
-            new ElectricWorker().DoWork();
-
-
-
+            // new ElectricWorker().DoWork();
             // 1) Inheritance override
             var dog0 = new Dog() { Age = 1, Weight = 10, Name = "Dog-Clark" };
-            var duck0 = new Duck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };
+            var duck0 = new WildDuck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };
             var cat0 = new Cat() { Age = 3, Weight = 4, Name = "Cat-Clark" };
 
             // 2) UpCasting vs DownCasting
             if (false) {
+                List<Animal> animals = new List<Animal>();
+                //{
+                //    dog0,
+                //    duck0,
+                //    cat0
+                //};
+                animals.Add((Animal)dog0);
+                animals.Add(duck0);
+                animals.Add((Animal)cat0);
+
                 // UP
-                Animal animal1 = dog0;
+                Animal animal1 = (Animal)dog0;
+                Console.WriteLine(animal1);
                 Animal animal2 = duck0;
                 Animal animal3 = cat0;
 
@@ -31,14 +39,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
                 // Duck castedDuck = homeAnimal3; // MISTAKE
 
                 Dog castedDogFromAnimal = (Dog)animal1;
-                Duck castedDuckFromAnimal = (Duck)animal2;
+                WildDuck castedDuckFromAnimal = (WildDuck)animal2;
                 Cat castedCatFromAnimal = (Cat)animal3;
 
                 Dog castedDogFromHomeAnimal = (Dog)homeAnimal1;
-                Duck castedDuckFromWildAnimal = (Duck)wildanimal2;
+                WildDuck castedDuckFromWildAnimal = (WildDuck)wildanimal2;
                 Cat castedCatFromHomeAnimal = (Cat)homeAnimal3;
 
-                // Cat castedDuckAttemp = (Cat) animal2; // MISTAKE
+                Cat castedDuckAttemp = (Cat) animal2; // MISTAKE
 
                 // Способы преобразований(Downcasting):
                 // 1 ключевое слово as:
@@ -52,7 +60,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
                 try {
                     Dog castedAnimalTRYCATCH = (Dog)animal1;
                     // Dog castedAnimalTRYCATCH = (Dog)animal2; // MISTAKE
-
                     castedAnimalTRYCATCH.ProtectAHuman();
                     castedAnimalTRYCATCH.MakeSound();
                 } catch (InvalidCastException ex) {
@@ -61,9 +68,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
                     Console.WriteLine(ex.Message);
                 }
                 // ключевого слова is:
-                if (animal2 is Dog) {  // MISTAKE
+                if (animal2 is Dog castedAnimalIS) {  // MISTAKE
                 // if (animal1 is Dog) {
-                    Dog castedAnimalIS = (Dog)animal1;
+                    // Dog castedAnimalIS = (Dog)animal2;
                     castedAnimalIS.ProtectAHuman();
                     castedAnimalIS.MakeSound();
                 }
@@ -72,32 +79,22 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
             // 3) Virtual + Override
             if (false) {
                 var dog1 = new Dog() { Age = 1, Weight = 10, Name = "Dog-Clark-1" };
-                var duck1 = new Duck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };
+                var duck1 = new WildDuck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };
                 var cat1 = new Cat() { Age = 3, Weight = 4, Name = "Cat-Clark-1" };
                 var dog2 = new Dog() { Age = 1, Weight = 10, Name = "Dog-Clark-2" };
-                var duck2 = new Duck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Tailand" };
+                var duck2 = new WildDuck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Tailand" };
                 var cat2 = new Cat() { Age = 3, Weight = 4, Name = "Cat-Clark-2" };
 
-                var cats = new List<Cat>() { cat0, cat1, cat2 };
-                foreach (var cat in cats) {
-                    cat.MakeCatEyes();
-                    cat.MakeSound();
-                }
-
-                var dogs = new List<Dog>() { dog0, dog1, dog2 };
-                foreach (var dog in dogs) {
-                    dog.ProtectAHuman();
-                    dog.MakeSound();
-                }
-
-                var ducks = new List<Duck>() { duck0, duck1, duck2 };
-                foreach (var duck in ducks) {
-                    duck.fly();
-                    duck.MakeSound();
-                }
-
                 Console.WriteLine(" Virtual + Override");
-                var animals = new List<Animal>() { cat1, cat2, dog1, dog2, duck1, duck2 };
+                var animals = new List<Animal>() 
+                {
+                    cat1,
+                    cat2,
+                    dog1,
+                    dog2,
+                    duck1,
+                    duck2
+                };
                 foreach (var animal in animals) {
                     animal.MakeSound();
                 }
@@ -116,7 +113,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
         }
 
         public virtual void MakeSound() {
-            Console.WriteLine("No sound");
+            Console.WriteLine("Animal Makes Sound");
         }
     }
 
@@ -128,8 +125,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
         }
     }
 
-    internal class Duck : WildAnimal {
-        public Duck() {
+    internal class HomeAnimal : Animal {
+        public string Name { get; set; }
+
+        public HomeAnimal() : base() {
+            Console.WriteLine("public HomeAnimal()");
+        }
+    }
+
+    internal class WildDuck : WildAnimal {
+        public WildDuck() {
             Console.WriteLine("public Duck()");
         }
 
@@ -139,14 +144,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
 
         public override void MakeSound() {
             Console.WriteLine("Kra-Kra");
-        }
-    }
-
-    internal class HomeAnimal : Animal {
-        public string Name { get; set; }
-
-        public HomeAnimal() : base() {
-            Console.WriteLine("public HomeAnimal()");
         }
     }
 

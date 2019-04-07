@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HW\Device.cs" />
+    <Compile Include="HW\ConsumerDevice.cs" />
+    <Compile Include="HW\ElectricDevice.cs" />
     <Compile Include="HW\ElectricWorker.cs" />
     <Compile Include="HW\Generator.cs" />
     <Compile Include="Program.cs" />
