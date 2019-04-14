@@ -12,48 +12,49 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
         public static void Main(string[] args) {
             // 0) Keyword Enum
             if (false) {
-                Day currentDay = Day.Sunday;
+                Days currentDay = Days.Sunday;
+                Console.WriteLine(currentDay.ToString());
+                Console.WriteLine((int)currentDay);
             }
 
             // 1) Interfaces 
             if (true) {
-
                 if (true) {
+                    // Task with different models
                     // 1_0) Interface_General_Definition
+
+                    IMovable movable = (IMovable)(IFlyable)new AirPlan();
+                    // IMovable movable = (IMovable)new Car();
+                    if (movable is AirPlan airPlan) {
+                        Console.WriteLine(airPlan.Model);
+                    }
+
+                    Console.WriteLine(movable.GetType().Name);
+
                     List<IMovable> movables = new List<IMovable>() {
-                        new AirPlan(),
-                        new Swimmer(),
+                        (IMovable) new AirPlan(),
+                        (IMovable) new Swimmer(),
                         new SkyDiver(),
                         new Duck(),
                         new Car(),
                         new Train()
                     };
 
-                    int[] speeds = movables.Select(m => m.MaxSpeed).ToArray();
-
-                    int[] speeds2 = new int[movables.Count];
+                    int[] speeds = new int[movables.Count];
                     for (int i = 0; i < movables.Count; i++) {
-                        speeds2[i] = movables[i].MaxSpeed;
+                        speeds[i] = movables[i].MaxSpeed;
                     }
 
                     int minSpeed = speeds.Min();
                     int maxSpeed = speeds.Max();
 
-                    IMovable minSpeedInstance = movables.FirstOrDefault(m => m.MaxSpeed == minSpeed);
-                    ShowType(minSpeedInstance);
-                    IMovable customSpeedInstance = movables.FirstOrDefault(m => m.MaxSpeed == 12345);
-                    ShowType(customSpeedInstance);
-                    IMovable maxSpeedInstance = movables.FirstOrDefault(m => m.MaxSpeed == maxSpeed);
-                    ShowType(maxSpeedInstance);
-
                     List<IFlyable> flyables = new List<IFlyable>() {
                         new AirPlan(),
-                        new Swimmer(),
                         new SkyDiver(),
                         new Duck()
                     };
 
-                    foreach (var flyable in flyables) {
+                    foreach (IFlyable flyable in flyables) {
                         flyable.Fly();
                     }
 
@@ -84,7 +85,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
                 if (true) {
                     // IOrderProviders
                     List<IOrdersProvider> ordersProvider = new List<IOrdersProvider> {
-                        (IOrdersProvider)new PrivateEntrepreneur(),
+                        (IOrdersProvider)new Entrepreneur(),
                         (IOrdersProvider)new Country()
                     };
 
@@ -95,7 +96,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
                 }
             }
 
-            // 4) Struct - HOMEWORK
+            // 2) Struct - HOMEWORK
 
             // *) Logger Example (using Interface, Pattern Strategy, like a DependencyInjection )
             // show this example with Test task
@@ -120,14 +121,16 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static string GetCurrentMethodName() {
-            StackFrame sf = new StackTrace().GetFrame(1);
-            return sf.GetMethod().Name;
+        public static string GetMethodName() {
+            var st = new StackTrace();
+            StackFrame sf = st.GetFrame(2);
+            string res = sf.GetMethod().Name;
+            return res;
         }
     }
 
     #region 0) Keyword Enum
-    public enum Day {
+    public enum Days {
         Monday = 1,
         Tuesday = 2,
         Wednesday = 3,
@@ -137,6 +140,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
         Sunday = 7
     }
 
+    enum MyValue : byte {
+        First = 2,
+        Second = 4,
+        Third = 8,
+        Fourrh = 16
+    }
+
+
     public enum Qualification {
         Beginner,
         Middle,
@@ -145,32 +156,37 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
     #endregion
 
     #region 1) Interface_General_Definition 
-    public class AirPlan : IFlyable, IMovable {
-        public int MaxSpeed => 1000;
+    // public class MyClass implements IMovable
+    // public class MyClass extends BaseClass
+    public class AirPlan : IFlyable {
+        public string Model { get; set; }
+
+        // public int MaxSpeed => 1000;
+        public int MaxSpeed {
+            get {
+                return 1000;
+            }
+        }
 
         public void Fly() {
             Console.WriteLine("AirPlan flies");
         }
     }
-    public class Swimmer : IFlyable, ISwimable {
+    public class Swimmer : ISwimable {
         public int MaxSpeed => 2;
-
-        public void Fly() {
-            Console.WriteLine("Swimmer flies");
-        }
 
         public void Swim() {
             Console.WriteLine("Swimmer swims");
         }
     }
-    public class SkyDiver : IFlyable, IMovable {
+    public class SkyDiver : IFlyable { // IMovable
         public int MaxSpeed => 20;
 
         public void Fly() {
             Console.WriteLine("SkyDiver flies");
         }
     }
-    public class Duck : IFlyable, IMovable, ISwimable {
+    public class Duck : IFlyable, ISwimable {
         public int MaxSpeed => 40;
 
         public void Fly() {
@@ -188,12 +204,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
         public int MaxSpeed => 200;
     }
 
-    public interface IFlyable : IMovable {
-        void Fly();
-    }
     public interface IMovable {
         int MaxSpeed { get; }
     }
+
+    public interface IFlyable : IMovable {
+        void Fly();
+    }
+
     public interface ISwimable : IMovable {
         void Swim();
     }
@@ -243,28 +261,28 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
         public List<Unit> Units { get; set; }
     }
 
-    public class PrivateEntrepreneur : IOrdersProvider {
-        public string Name { get; set; } = "PrivateEntrepreneur";
+    public class Entrepreneur : IOrdersProvider {
+        public string Name { get; set; } = "Pupkin";
 
-        public IEnumerable<Order> GetOrders() {
-            Console.WriteLine($"{GetType().Name}: {Program.GetCurrentMethodName()}");
+        public IEnumerable<Order> GetOrders() { // Order[] ... List<Order>
+            Console.WriteLine($"{GetType().Name}: {Program.GetMethodName()}");
             return new List<Order>();
         }
 
         public bool IsAvailableOrders() {
-            Console.WriteLine($"{GetType().Name}: {Program.GetCurrentMethodName()}");
+            Console.WriteLine($"{GetType().Name}: {Program.GetMethodName()}");
             return true;
         }
     }
 
     public class Country : IOrdersProvider {
         public IEnumerable<Order> GetOrders() {
-            Console.WriteLine($"{GetType().Name}: {Program.GetCurrentMethodName()}");
+            Console.WriteLine($"{GetType().Name}: {Program.GetMethodName()}");
             return new Order[0];
         }
 
         public bool IsAvailableOrders() {
-            Console.WriteLine($"{GetType().Name}: {Program.GetCurrentMethodName()}");
+            Console.WriteLine($"{GetType().Name}: {Program.GetMethodName()}");
             return false;
         }
     }
@@ -310,4 +328,21 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
     }
     #endregion
 
+    #region 2) Struct
+    public struct Point {
+        public int X { get; set; }
+        // public int X { get; set; } = 10; // not allowed
+
+        public int Y { get; set; }
+
+        // not allowed
+        //public Point() {
+        //}
+
+        public Point(int x, int y) {
+            X = x;
+            Y = y;
+        }
+    }
+    #endregion
 }
