@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>LDY.UIP.EarthCalculator.UIConsole</RootNamespace>
     <AssemblyName>LDY.UIP.EarthCalculator.UIConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,9 +52,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LDY.UIP.EarthCalculator.Shared\LDY.UIP.EarthCalculator.Shared.csproj">
-      <Project>{54B10972-FAF8-4239-8873-90B079FB262B}</Project>
-      <Name>LDY.UIP.EarthCalculator.Shared</Name>
+    <ProjectReference Include="..\LDY.UIP.EarthCalculator.BLL\LDY.UIP.EarthCalculator.BLL.csproj">
+      <Project>{D89FF8E8-A880-4849-A521-B05DECF51CDE}</Project>
+      <Name>LDY.UIP.EarthCalculator.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LDY.UIP.EarthCalculator.DAL\LDY.UIP.EarthCalculator.DAL.csproj">
+      <Project>{F5CC08F6-1D6B-4E6E-9907-53579692CB31}</Project>
+      <Name>LDY.UIP.EarthCalculator.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LDY.UIP.EarthCalculator.SharedFramework\LDY.UIP.EarthCalculator.SharedFramework.csproj">
+      <Project>{F93FB22E-FCBA-4402-BDD3-E876E0DD02D1}</Project>
+      <Name>LDY.UIP.EarthCalculator.SharedFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

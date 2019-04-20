@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LDY.UIP.EarthCalculator.DAL</RootNamespace>
     <AssemblyName>LDY.UIP.EarthCalculator.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storages\ConsoleLogStorage.cs" />
+    <Compile Include="Storages\FileLogStorage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LDY.UIP.EarthCalculator.SharedFramework\LDY.UIP.EarthCalculator.SharedFramework.csproj">
+      <Project>{F93FB22E-FCBA-4402-BDD3-E876E0DD02D1}</Project>
+      <Name>LDY.UIP.EarthCalculator.SharedFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

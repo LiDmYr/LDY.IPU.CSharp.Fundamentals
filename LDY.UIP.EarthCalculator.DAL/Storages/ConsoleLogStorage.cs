@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using LDY.UIP.EarthCalculator.Shared.Interfaces;
 
-namespace LDY.UIP.EarthCalculator.Shared.Services {
-    public class FileLogStorage : ILogStorage {
+namespace LDY.UIP.EarthCalculator.DAL.Storages {
+    public class ConsoleLogStorage : ILogStorage {
         public void PrintMessage(string message) {
-            Console.WriteLine($"FileLogStorage: {message}");
+            Console.WriteLine($"ConsoleLogStorage: {message}");
         }
     }
 }

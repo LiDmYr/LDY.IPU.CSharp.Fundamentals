@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace LDY.UIP.EarthCalculator.Shared.Interfaces {
     public interface ILogger {
+        void AddLogStorage(ILogStorage logStorage);
+        void RemoveLogStorage(ILogStorage logStorage);
+        List<ILogStorage> GetCurrentLogStorages();
+
         void Info(string message);
         void Warn(string message);
         void Error(string message);

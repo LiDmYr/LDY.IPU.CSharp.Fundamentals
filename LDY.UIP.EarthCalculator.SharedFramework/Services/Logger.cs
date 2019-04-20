@@ -7,7 +7,7 @@ using LDY.UIP.EarthCalculator.Shared.Interfaces;
 
 namespace LDY.UIP.EarthCalculator.Shared.Services {
     public class Logger : ILogger {
-        public List<ILogStorage> LogStorages = new List<ILogStorage>();
+        private List<ILogStorage> LogStorages = new List<ILogStorage>();
 
         private int _logLevel = (int)Level.info;
 
@@ -23,6 +23,17 @@ namespace LDY.UIP.EarthCalculator.Shared.Services {
             }
         }
 
+        public void AddLogStorage(ILogStorage logStorage) {
+            LogStorages.Add(logStorage);
+        }
+
+        public void RemoveLogStorage(ILogStorage logStorage) {
+            LogStorages.Remove(logStorage);
+        }
+
+        public List<ILogStorage> GetCurrentLogStorages() {
+            return new List<ILogStorage>(LogStorages);
+        }
 
         private void PrintMessage(string messageType, string message, int currentLogLevel) {
             if (this.LogLevel > currentLogLevel) {

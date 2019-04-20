@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LDY.UIP.EarthCalculator.BLL.Services;
+using LDY.UIP.EarthCalculator.DAL.Storages;
+using LDY.UIP.EarthCalculator.Shared;
 using LDY.UIP.EarthCalculator.Shared.Services;
 
 namespace LDY.UIP.EarthCalculator.UIConsole {
     class Program {
         static void Main(string[] args) {
-            Logger log = new Logger();
-            log.LogStorages.Add(new FileLogStorage());
-            log.LogStorages.Add(new ConsoleLogStorage());
+            LandAreaCalculator lac = new LandAreaCalculator();
+            Console.WriteLine(lac.CalculateLandArea(null));
+   
 
-            log.Info("test");
+            StaticInjector.Logger.AddLogStorage(new FileLogStorage());
+            StaticInjector.Logger.AddLogStorage(new ConsoleLogStorage());
+
+            StaticInjector.Logger.Info("test");
         }
     }
 }
