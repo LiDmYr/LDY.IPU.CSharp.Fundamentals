@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LDY.UIP.EarthCalculator.BLL.Interfaces {
+namespace LDY.UIP.EarthCalculator.Shared.Interfaces {
     public interface ILogger {
         void Info(string message);
         void Warn(string message);

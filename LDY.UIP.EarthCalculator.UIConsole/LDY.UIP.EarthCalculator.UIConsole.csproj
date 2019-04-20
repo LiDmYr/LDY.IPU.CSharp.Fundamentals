@@ -51,9 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LDY.UIP.EarthCalculator.BLL\LDY.UIP.EarthCalculator.BLL.csproj">
-      <Project>{D89FF8E8-A880-4849-A521-B05DECF51CDE}</Project>
-      <Name>LDY.UIP.EarthCalculator.BLL</Name>
+    <ProjectReference Include="..\LDY.UIP.EarthCalculator.Shared\LDY.UIP.EarthCalculator.Shared.csproj">
+      <Project>{54B10972-FAF8-4239-8873-90B079FB262B}</Project>
+      <Name>LDY.UIP.EarthCalculator.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

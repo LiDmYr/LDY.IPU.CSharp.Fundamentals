@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LDY.UIP.EarthCalculator.BLL.Interfaces;
+using LDY.UIP.EarthCalculator.Shared.Interfaces;
 
-namespace LDY.UIP.EarthCalculator.BLL.Services {
+namespace LDY.UIP.EarthCalculator.Shared.Services {
     public class Logger : ILogger {
-        // public List<ILogStorage> LogStorages = new List<ILogStorage>();
+        public List<ILogStorage> LogStorages = new List<ILogStorage>();
 
         private int _logLevel = (int)Level.info;
 
@@ -29,9 +29,9 @@ namespace LDY.UIP.EarthCalculator.BLL.Services {
                 return;
             }
 
-            //foreach (ILogStorage logStorage in LogStorages) {
-            //    logStorage.PrintMessage($"{DateTime.Now}: {messageType}: {message}");
-            //}
+            foreach (ILogStorage logStorage in LogStorages) {
+                logStorage.PrintMessage($"{DateTime.Now}: {messageType}: {message}");
+            }
         }
 
         public void Debug(string message) {
