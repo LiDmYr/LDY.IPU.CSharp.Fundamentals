@@ -4,18 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FDA97FEB-EBFD-45C1-AB35-48546B0C8FC2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>LDY.UIP.EarthCalculator.UIConsole</RootNamespace>
-    <AssemblyName>LDY.UIP.EarthCalculator.UIConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <ProjectGuid>{94B51367-E6C0-4F62-AABD-B10FE72A79E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LDY.UIP.LandCalculatorApp.DAL</RootNamespace>
+    <AssemblyName>LDY.UIP.LandCalculatorApp.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,25 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIConsoleApp.cs" />
+    <Compile Include="Storages\ConsoleLogStorage.cs" />
+    <Compile Include="Storages\FileLogStorage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LDY.UIP.EarthCalculator.BLL\LDY.UIP.EarthCalculator.BLL.csproj">
-      <Project>{D89FF8E8-A880-4849-A521-B05DECF51CDE}</Project>
-      <Name>LDY.UIP.EarthCalculator.BLL</Name>
+    <ProjectReference Include="..\LDY.UIP.LandCalculatorApp.BLL\LDY.UIP.LandCalculatorApp.BLL.csproj">
+      <Project>{B9D95D21-382B-4E13-9947-3BC3F9A38C09}</Project>
+      <Name>LDY.UIP.LandCalculatorApp.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LDY.UIP.EarthCalculator.DAL\LDY.UIP.EarthCalculator.DAL.csproj">
-      <Project>{F5CC08F6-1D6B-4E6E-9907-53579692CB31}</Project>
-      <Name>LDY.UIP.EarthCalculator.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LDY.UIP.EarthCalculator.SharedFramework\LDY.UIP.EarthCalculator.SharedFramework.csproj">
-      <Project>{F93FB22E-FCBA-4402-BDD3-E876E0DD02D1}</Project>
-      <Name>LDY.UIP.EarthCalculator.SharedFramework</Name>
+    <ProjectReference Include="..\LDY.UIP.LandCalculatorApp.Shared\LDY.UIP.LandCalculatorApp.Shared.csproj">
+      <Project>{72B66514-6E4B-45F0-A182-4E3DEBA37F69}</Project>
+      <Name>LDY.UIP.LandCalculatorApp.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
