@@ -87,6 +87,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5D86F6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.UIP.LandCalculatorApp.Shared", "LDY.UIP.LandCalculatorApp.Shared\LDY.UIP.LandCalculatorApp.Shared.csproj", "{72B66514-6E4B-45F0-A182-4E3DEBA37F69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LDY.IPU.CSharp.Fundamentals.Class9.WPFBigPict", "LDY.IPU.CSharp.Fundamentals.Class9.WPFBigPict\LDY.IPU.CSharp.Fundamentals.Class9.WPFBigPict.csproj", "{093AB302-E2EE-4B2C-B80B-285F7B1C692B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{72B66514-6E4B-45F0-A182-4E3DEBA37F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72B66514-6E4B-45F0-A182-4E3DEBA37F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72B66514-6E4B-45F0-A182-4E3DEBA37F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{093AB302-E2EE-4B2C-B80B-285F7B1C692B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093AB302-E2EE-4B2C-B80B-285F7B1C692B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093AB302-E2EE-4B2C-B80B-285F7B1C692B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093AB302-E2EE-4B2C-B80B-285F7B1C692B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -213,6 +219,7 @@ Global
 		{94B51367-E6C0-4F62-AABD-B10FE72A79E3} = {914CE4D5-19DA-4AC2-8AA4-7BB128AD5995}
 		{5D86F60C-6AF5-4CBA-9022-869F6FE407B6} = {54641E37-31FD-4622-9D3F-13BDCED45924}
 		{72B66514-6E4B-45F0-A182-4E3DEBA37F69} = {5D86F60C-6AF5-4CBA-9022-869F6FE407B6}
+		{093AB302-E2EE-4B2C-B80B-285F7B1C692B} = {88474EA4-7F5D-4728-962F-0327C156E6D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {388B8C2A-575F-468F-B318-2EAE7CDBD4C0}

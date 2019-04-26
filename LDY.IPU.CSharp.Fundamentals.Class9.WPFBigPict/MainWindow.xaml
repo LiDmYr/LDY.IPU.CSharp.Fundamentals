@@ -1,0 +1,19 @@
+﻿<Window x:Class="LDY.IPU.CSharp.Fundamentals.Class9.WPFBigPict.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LDY.IPU.CSharp.Fundamentals.Class9.WPFBigPict"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Grid></Grid>
+        <TextBlock FontStyle="Italic" FontWeight="Bold" Height="30">Name</TextBlock>
+        <TextBox TextWrapping="Wrap" x:Name="NameTextBox" TextChanged="NameTextBox_TextChanged">WriteHereYourName</TextBox>
+        <TextBlock FontStyle="Italic" FontWeight="Bold">Address</TextBlock>
+        <TextBox x:Name="AddressTextBox" TextChanged="AddressTextBox_TextChanged">WriteHereYourAddress</TextBox>
+        <Label FontStyle="Italic" FontWeight="Bold">Password</Label>
+        <PasswordBox x:Name="PasswordBox"></PasswordBox>
+        <Button Click="Button_Click">Submit</Button>
+    </StackPanel>
+</Window>
