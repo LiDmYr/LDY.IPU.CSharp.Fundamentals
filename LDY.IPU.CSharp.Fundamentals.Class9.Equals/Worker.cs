@@ -51,5 +51,14 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
         public static bool operator <=(WorkerWithOverridenEquals worker1, WorkerWithOverridenEquals worker2) {
             return worker1.Name.Length <= worker2.Name.Length;
         }
+
+        public static bool operator true(WorkerWithOverridenEquals worker) {
+            return !string.IsNullOrWhiteSpace(worker.Name);
+        }
+
+        public static bool operator false(WorkerWithOverridenEquals worker) {
+            return string.IsNullOrWhiteSpace(worker.Name);
+        }
+
     }
 }

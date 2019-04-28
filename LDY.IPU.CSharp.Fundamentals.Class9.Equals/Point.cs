@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,8 @@ namespace LDY.IPU.CSharp.Fundamentals.Class9.Equals {
             return pointObj.X == this.X && pointObj.Y == this.Y;
         }
 
-        public static PointWithOverridenEquals operator +(PointWithOverridenEquals p1, PointWithOverridenEquals p2) {
-            return new PointWithOverridenEquals(p1.X + p2.X, p1.Y + p2.Y, p1.Id + p2.Id);
+        public static PointWithOverridenEquals operator +(PointWithOverridenEquals left, PointWithOverridenEquals right) {
+            return new PointWithOverridenEquals(left.X + right.X, left.Y + right.Y, left.Id + right.Id);
         }
 
         public static PointWithOverridenEquals operator -(PointWithOverridenEquals p1, PointWithOverridenEquals p2) {
