@@ -329,17 +329,17 @@ namespace LDY.IPU.CSharp.Fundamentals.Class7.OOP_Interface {
     #endregion
 
     #region 2) Struct
-    public struct Point {
+    public struct CustomPoint {
         public int X { get; set; }
         // public int X { get; set; } = 10; // not allowed
 
         public int Y { get; set; }
 
         // not allowed
-        //public Point() {
+        //public CustomPoint() {
         //}
 
-        public Point(int x, int y) {
+        public CustomPoint(int x, int y) {
             X = x;
             Y = y;
         }
