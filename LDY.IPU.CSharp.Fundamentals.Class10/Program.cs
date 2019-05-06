@@ -107,7 +107,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
             }
 
             // 4 Directives
-            if (true) {
+            if (false) {
                 WriteSomethingRule1();
                 WriteSomethingRule2();
                 DebugMethod();
@@ -117,7 +117,6 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
         }
 
         #region ASSEMBLIES
-
         private static void PrintAllAttributes(string target, IEnumerable<Attribute> customAttributesWithoutInheritChain) {
             Console.WriteLine($"---------------- TARGET={target}");
 
