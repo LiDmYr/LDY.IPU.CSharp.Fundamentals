@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-// using System.Linq;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
     internal class Program {
@@ -27,6 +25,10 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
                 var personNotStaticClass2 = new PersonNotStaticClass("Name");
                 var personNotStaticClass3 = new PersonNotStaticClass("2");
 
+                PersonNotStaticClass.GetPersonsCountStatic();
+
+                int count = PersonNotStaticClass.PersonsCount;
+
                 int personsCount = PersonNotStaticClass.PersonsCount;
                 int PersonsCount1 = personNotStaticClass1.GetPersonsCount();
                 int PersonsCount2 = personNotStaticClass2.GetPersonsCount();
@@ -43,9 +45,23 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
 
             // 5) ListCollectionUsing
             if (false) {
-                List<Human> persons1 = new List<Human>();
-                for (int i = 0; i < 3; i++) {
-                    persons1.Add(new Human("Name_list1_" + i));
+                //Human[] humans = new Human[5];
+                //int arrayLength = humans.Length;
+
+                List<Human> humans = new List<Human>();
+                Human h = new Human("");
+                humans.Add(h);
+                int listLength = humans.Count;
+
+                //List<int> numbers = new List<int>() {
+                //    1, 2, 3, 4
+                //};
+                //bool isContains = numbers.Contains(2);
+
+                //humans.Remove(new Human("")) ;// Add(new Human("name"));
+
+                for (int i = 0; i < 24; i++) {
+                    humans.Add(new Human("Name_list1_" + i));
                 }
                 List<Human> persons2 = new List<Human>();
                 for (int i = 0; i < 40; i++) {
@@ -53,13 +69,22 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
                 }
 
                 var human = new Human("Added by hand");
-                persons1.Add(human);
 
-                persons1.AddRange(persons2);
-                persons1.Remove(human);
+                humans.Add(human);
+                humans.AddRange(persons2);
+                humans.Remove(human);
+                humans.RemoveAt(2);
+                int length = humans.Count;
 
-                int length = persons1.Count;
+                for (int i = 0; i < 190; i++) {
+                    humans.RemoveAt(0);
+                }
+
             }
+        }
+
+        private static void ModifyString(string name) {
+            name = "";
         }
     }
 
@@ -100,9 +125,18 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
     }
 
     public class PersonNotStaticClass {
+        public static int StaticFlag = 1001;
         public static int PersonsCount { get; private set; }
 
         public string Name { get; private set; }
+
+        public string GetDescription() {
+            StaticFlag = 10000000;
+            Name = "Dima";
+
+            //return Name + StaticFlag;
+            return this.Name + StaticFlag;
+        }
 
         public PersonNotStaticClass(string name) {
             this.Name = name;
@@ -113,11 +147,10 @@ namespace LDY.IPU.CSharp.Fundamentals.Class5.OOP_Classes {
             return PersonsCount;
         }
 
-        public static int GetPersonsCountStatic() {
+        public static int GetPersonsCountStatic() {    
             return PersonsCount;
         }
-
-
+        
         public static string GetNameStatic(PersonNotStaticClass person) {
             return person.Name;
         }
