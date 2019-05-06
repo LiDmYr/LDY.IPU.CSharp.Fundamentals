@@ -5,11 +5,23 @@ using System.Collections.Generic;
 namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
     public class Program {
         private static void Main(string[] args) {
-            // new ElectricWorker().DoWork();
-            // 1) Inheritance override
+            // 1) Inheritance
             var dog0 = new Dog() { Age = 1, Weight = 10, Name = "Dog-Clark" };
             var duck0 = new WildDuck() { Age = 4, Weight = 2, CountryWhereGoInWinter = "Zanzibzar" };
             var cat0 = new Cat() { Age = 3, Weight = 4, Name = "Cat-Clark" };
+            
+            if (false) {
+                Console.WriteLine(dog0);
+
+                string dogaaa = dog0.ToString();
+                string dog1aa = dog0.GetType().FullName;
+                string a = 10.ToString();
+
+                List<Animal> animals_example = new List<Animal>();
+                animals_example.Add(dog0);
+                animals_example.Add(duck0);
+                animals_example.Add(cat0); 
+            }
 
             // 2) UpCasting vs DownCasting
             if (false) {
@@ -99,6 +111,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance {
                     animal.MakeSound();
                 }
             }
+
+            // Task - create classes hierarchy
+            //HomoSapiens
+            //Father
+            //Mother
+            //Person
+            //Unemployed
+            //Employee
+            //Plumber
 
             // Task with Weapon
         }
