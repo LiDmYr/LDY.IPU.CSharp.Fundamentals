@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
+﻿namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
     public class ConsumerDevice : ElectricDevice {
         public override int AvailablePower {
             get {

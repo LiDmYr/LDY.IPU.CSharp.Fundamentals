@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
     public abstract class ElectricDevice {
-        private static int IdCounter;
+        private static int IdCounter = new Random().Next(0, 100);
 
         public readonly int Id;
 
@@ -20,17 +16,15 @@ namespace LDY.IPU.CSharp.Fundamentals.Class6.OOP_Inheritance.HW {
 
         public ConsumerDevice ChildDevice { get; protected set; }
 
-        static ElectricDevice() {
-            var r = new Random();
-            IdCounter = r.Next(0, 100);
-        }
-
-        public ElectricDevice() {
+        protected ElectricDevice() {
             Id = ++IdCounter;
         }
 
         public void PlugChildDevice(ConsumerDevice device) {
-            if (IsConnectedChildDevice || AvailablePower < device.ConsumptionPower) {
+            // TODO: inform a reason why operation is cancelled
+            if (IsConnectedChildDevice ||
+                device.HasParentDevice ||
+                AvailablePower < device.ConsumptionPower) {
                 return;
             }
 
