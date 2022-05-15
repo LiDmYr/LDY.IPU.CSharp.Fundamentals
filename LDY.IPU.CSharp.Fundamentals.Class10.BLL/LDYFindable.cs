@@ -1,4 +1,4 @@
-﻿using LDY.IPU.CSharp.Fundamentals.Class10.Shared.Interfaces;
+﻿using LDY.IPU.CSharp.Fundamentals.Class10.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10.Shared {
         }
 
         public void SaySomething() {
-            Console.WriteLine("SaySomething - LDYFindableA");
+            Console.WriteLine("SaySomething - LDYFindableB");
         }
     }
 
@@ -44,7 +44,7 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10.Shared {
         }
 
         public void SaySomething() {
-            Console.WriteLine("SaySomething - LDYFindableA");
+            Console.WriteLine("SaySomething - LDYFindableC");
         }
     }
 }

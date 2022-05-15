@@ -1,11 +1,10 @@
-﻿//#define var1
+﻿// #define var1
 #define var2
 
 using LDY.IPU.CSharp.Fundamentals.Class10.Attributes;
 using LDY.IPU.CSharp.Fundamentals.Class10.Interfaces;
 using LDY.IPU.CSharp.Fundamentals.Class10.Models;
 using LDY.IPU.CSharp.Fundamentals.Class10.Services;
-using LDY.IPU.CSharp.Fundamentals.Class10.Shared.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,30 +14,68 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using LDY.IPU.CSharp.Fundamentals.Class10.Shared;
 
 namespace LDY.IPU.CSharp.Fundamentals.Class10 {
     public class Program {
         public static void Main(string[] args) {
+
+            List<int> ints = new List<int> { 1, 2, 3, 5, 6, 9 };
+
+            IEnumerable<int> selected = ints.Where(i => i > 3);
+
+            ints.Add(100);
+
+            foreach (var item in selected) {
+                Console.WriteLine(item);
+            }
+
+
             // 1 Attributes
             if (false) {
                 var logRecord = new LogRecord();
 
-                // РeфлEксия
-                Type type = typeof(LogRecord);
-                Type typeByGetType = logRecord.GetType();
-
-                // Attributes for class
-                object[] customAttributesWithoutInheritChain = type.GetCustomAttributes(false);
-                PrintAllAttributes("class", customAttributesWithoutInheritChain.Cast<Attribute>());
-
-                // Attributes for method
-                MethodInfo methodInfo = type.GetMethod("DoSomething");
-                IEnumerable<Attribute> customMethodAttributes = methodInfo.GetCustomAttributes();
-                PrintAllAttributes("method", customMethodAttributes);
+                ReflectIt(logRecord);
+                ReflectIt(new System.Drawing.Point());
             }
 
             // 2 Serialization
             if (false) {
+                var logRecord = new LogRecord("a");
+                var logRecord2 = new LogRecord("b");
+                var logRecord3 = new LogRecord("c");
+                var logRecord4 = new LogRecord("d");
+
+                logRecord.NestedLogRecord = logRecord2;
+                logRecord.NestedLogRecords = new List<LogRecord>() {
+                    logRecord3,
+                    logRecord4
+                };
+
+                //////////////////////////////
+                string res1 = JsonConvert.SerializeObject(logRecord);
+                string res2 = JsonConvert.SerializeObject(logRecord2);
+
+                LogRecord lr = JsonConvert.DeserializeObject<LogRecord>(res1);
+                LogRecord lr2 = JsonConvert.DeserializeObject<LogRecord>(res2);
+                //////////////////////////////
+
+
+                //////////////////////////////
+                string listRecords =
+                    JsonConvert.SerializeObject(logRecord.NestedLogRecords);
+                List<LogRecord> listRecordDeserialized = 
+                    JsonConvert.DeserializeObject<List<LogRecord>>(listRecords);
+                //////////////////////////////
+
+                //////////////////////////////
+                IJSONSerializer js = new JSONSerializer();
+                string _serializedRecords = js.Serialize(logRecord.NestedLogRecords);
+                List<LogRecord> _records = js.Deserialize<List<LogRecord>>(_serializedRecords);
+                //////////////////////////////
+
+
                 var serializer = new JSONSerializer();
 
                 // One LogRecord
@@ -62,21 +99,24 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
             }
 
             //3 Assemblies
-            if (false) {
+            if (true) {
                 for (int i = 0; i < 5; i++) {
                     Console.WriteLine("--------------------------------------");
 
                     string path = @"C:\Users\workspace\source\repos\LDY.IPU.CSharp.Fundamentals\Libraries";
+                    string[] allFileEntries = Directory.GetFiles(path);
                     string[] fileEntries = Directory.GetFiles(path, "*.dll");
-
+                    
                     List<IFindable> interfaces = new List<IFindable>();
 
                     foreach (var file in fileEntries) {
                         Assembly assembly = Assembly.LoadFrom(file);
                         Type[] types = assembly.GetExportedTypes();
 
-                        foreach (TypeInfo type in types) {
-                            IEnumerable<Type> implementedInterfaces = type.ImplementedInterfaces;
+                        foreach (Type type in types) {
+                            TypeInfo typeInfo = (TypeInfo)type;
+
+                            IEnumerable<Type> implementedInterfaces = typeInfo.ImplementedInterfaces;
 
                             bool isImplementedRequiredInterface = false;
                             foreach (Type implementedInterface in implementedInterfaces) {
@@ -89,9 +129,9 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
                             if (isImplementedRequiredInterface) {
                                 IFindable instance;
                                 try {
-                                    instance = (IFindable)Activator.CreateInstance(type);
+                                    instance = (IFindable)Activator.CreateInstance(type, 10);
                                     interfaces.Add(instance);
-                                } catch (Exception) {
+                                } catch (Exception e) {
                                     //
                                 }
                             }
@@ -114,6 +154,25 @@ namespace LDY.IPU.CSharp.Fundamentals.Class10 {
                 ReleaseMethod();
             }
             Console.ReadLine();
+        }
+
+        private static void ReflectIt(object obj) {
+            // РeфлEксия
+            //Type type = typeof(LogRecord);
+            Type typeByGetType = obj.GetType();
+
+            Console.WriteLine(typeByGetType.BaseType.ToString());
+
+            // Attributes for class
+            object[] customAttributesWithoutInheritChain = typeByGetType.GetCustomAttributes(false);
+            PrintAllAttributes("class", customAttributesWithoutInheritChain.Cast<Attribute>());
+
+            // Attributes for method
+            MethodInfo methodInfo = typeByGetType.GetMethod("DoSomething");
+            IEnumerable<Attribute> customMethodAttributes = methodInfo.GetCustomAttributes();
+            PrintAllAttributes("method", customMethodAttributes);
+
+            //var result = methodInfo.Invoke(obj, null);
         }
 
         #region ASSEMBLIES
